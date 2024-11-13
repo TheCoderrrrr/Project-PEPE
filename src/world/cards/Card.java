@@ -9,14 +9,21 @@ public abstract class Card {
     protected final static int length = 300;
     protected int x;
     protected int y;
-    public Card(int x, int y)
+    protected int centerX;
+    protected int centerY;
+    protected float rotation;
+    public Card(int x, int y, float rotation)
     {
         this.x = x;
         this.y = y;
+        centerX = x + width/2;
+        centerY = y + length/2;
+        this.rotation = rotation;
     }
     public abstract void action();
     public void render(Graphics g)
     {
+        g.rotate(centerX, centerY, rotation);
         g.drawRect(x, y, width, length);
     }
     public static int getWidth()
@@ -41,5 +48,20 @@ public abstract class Card {
     }
     public boolean isOver(int mX, int mY) {
         return x < mX && x + width > mX && y < mY && y + length > mY;
+    }
+    public void setRotation(float degree){
+        rotation = degree;
+    }
+    public float getRotation()
+    {
+        return rotation;
+    }
+    public int getCenterX()
+    {
+        return centerX;
+    }
+    public int getCenterY()
+    {
+        return centerY;
     }
 }
