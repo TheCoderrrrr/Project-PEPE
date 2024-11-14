@@ -15,13 +15,13 @@ public class CardManager {
     public CardManager()
     {
         hand = new ArrayList<>();
-        hand.add(new ExampleCard(Main.getScreenWidth()/2, (int) (Main.getScreenHeight()-Card.getLength()*0.6),0));
+        hand.add(new ExampleCard(Main.getScreenWidth()/2, (int) (Main.getScreenHeight()-Card.getHeight()*0.6),0));
         updateTotalCardWidth();
         updateCardPositions();
-        for(Card c: hand)
-        {
-            updateRotation(c);
-        }
+//        for(Card c: hand)
+//        {
+//            updateRotation(c);
+//        }
     }
 
     public void update()
@@ -73,17 +73,17 @@ public class CardManager {
     }
     public void addCard()
     {
-        int i = 0;
-        hand.add(new ExampleCard(Main.getScreenWidth()/2, (int) (Main.getScreenHeight()-Card.getLength()*0.6), 0));
+//        int i = 0;
+        hand.add(new ExampleCard(Main.getScreenWidth()/2, (int) (Main.getScreenHeight()-Card.getHeight()*0.6), 0));
         updateTotalCardWidth();
         updateCardPositions();
-        for(Card c: hand)
-        {
-            updateRotation(c);
-            i++;
-            System.out.println("number card : " + i + " , rotation : " + c.getRotation());
-        }
-        i = 0;
+//        for(Card c: hand)
+//        {
+//            updateRotation(c);
+//            i++;
+//            System.out.println("number card : " + i + " , rotation : " + c.getRotation());
+//        }
+//        i = 0;
     }
     public void removeCard(int x, int y)
     {
@@ -94,10 +94,10 @@ public class CardManager {
                 hand.remove(i);
                 updateTotalCardWidth();
                 updateCardPositions();
-                for(Card c: hand)
-                {
-                    updateRotation(c);
-                }
+//                for(Card c: hand)
+//                {
+//                    updateRotation(c);
+//                }
                 return;
             }
         }

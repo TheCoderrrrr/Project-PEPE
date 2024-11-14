@@ -6,7 +6,7 @@ public abstract class Card {
     protected int cost;
     protected int rarity;
     protected final static int width = 200;
-    protected final static int length = 300;
+    protected final static int height = 300;
     protected int x;
     protected int y;
     protected int centerX;
@@ -17,22 +17,22 @@ public abstract class Card {
         this.x = x;
         this.y = y;
         centerX = x + width/2;
-        centerY = y + length/2;
+        centerY = y + height /2;
         this.rotation = rotation;
     }
     public abstract void action();
     public void render(Graphics g)
     {
         g.rotate(centerX, centerY, rotation);
-        g.drawRect(x, y, width, length);
+        g.drawRect(x, y, width, height);
     }
     public static int getWidth()
     {
         return width;
     }
-    public static int getLength()
+    public static int getHeight()
     {
-        return length;
+        return height;
     }
     public int getCost()
     {
@@ -47,7 +47,7 @@ public abstract class Card {
         this.x = x;
     }
     public boolean isOver(int mX, int mY) {
-        return x < mX && x + width > mX && y < mY && y + length > mY;
+        return x <= mX && x + width > mX && y <= mY && y + height > mY;
     }
     public void setRotation(float degree){
         rotation = degree;
