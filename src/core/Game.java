@@ -28,7 +28,7 @@ public class Game extends BasicGameState
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException 
 	{
 		gc.setShowFPS(true);
-		world = new World();
+		world = new World(gc);
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
@@ -56,8 +56,12 @@ public class Game extends BasicGameState
 	public void mousePressed(int button, int x, int y)
 	{
 		world.mousePressed(button, x, y);
+		System.out.println(button + " : " + x + " : " + y);
 	}
-	
+	public void mouseReleased(int button, int x, int y){
+		world.mouseReleased(button, x, y);
+		System.out.println(button + " : " + x + " : " + y);
+	}
 	
 
 

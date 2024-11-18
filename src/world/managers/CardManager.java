@@ -1,6 +1,8 @@
 package world.managers;
 
+import core.Game;
 import core.Main;
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import world.cards.Card;
 import world.cards.ExampleCard;
@@ -12,16 +14,22 @@ public class CardManager {
     private ArrayList<Card> discardPile;
     private ArrayList<Card> Deck;
     private int totalCardWidth;
-    public CardManager()
+    private GameContainer gc;
+    public CardManager(GameContainer gc)
     {
+        this.gc = gc;
         hand = new ArrayList<>();
-        hand.add(new ExampleCard(Main.getScreenWidth()/2, (int) (Main.getScreenHeight()-Card.getHeight()*0.6),0));
+        hand.add(new ExampleCard(gc, Main.getScreenWidth()/2, (int) (Main.getScreenHeight()-Card.getHeight()*0.6),0));
         updateTotalCardWidth();
         updateCardPositions();
 //        for(Card c: hand)
 //        {
 //            updateRotation(c);
 //        }
+    }
+    public GameContainer getGC()
+    {
+        return gc;
     }
 
     public void update()
@@ -45,7 +53,7 @@ public class CardManager {
         int firstCardX = zeroPos - totalCardWidth/2;
         for(int i = 0; i < hand.size(); i++)
         {
-            hand.get(i).moveCard(firstCardX + i * Card.getWidth());
+            hand.get(i).moveCard(firstCardX + i * Card.getWidth(), (int) (Main.getScreenHeight()-Card.getHeight()*0.6));
         }
     }
     public void updateRotation(Card c)
@@ -63,7 +71,7 @@ public class CardManager {
     }
     public void mousePressed(int button, int x, int y)
     {
-        if(button == 0)
+        if(button == 2)
         {
             addCard();
         }else if(button == 1)
@@ -74,7 +82,7 @@ public class CardManager {
     public void addCard()
     {
 //        int i = 0;
-        hand.add(new ExampleCard(Main.getScreenWidth()/2, (int) (Main.getScreenHeight()-Card.getHeight()*0.6), 0));
+        hand.add(new ExampleCard(gc, Main.getScreenWidth()/2, (int) (Main.getScreenHeight()-Card.getHeight()*0.6), 0));
         updateTotalCardWidth();
         updateCardPositions();
 //        for(Card c: hand)
@@ -101,5 +109,9 @@ public class CardManager {
                 return;
             }
         }
+    }
+    public void mouseReleased(int button, int x, int y)
+    {
+
     }
 }

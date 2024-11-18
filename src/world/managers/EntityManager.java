@@ -13,9 +13,9 @@ public class EntityManager {
     public EntityManager()
     {
         entities = new ArrayList<>();
-        entities.add(new PlayerUnit(Main.getScreenWidth()/4, Main.getScreenHeight()/2));
-        entities.add(new EnemyUnit(Main.getScreenWidth()*3/4, Main.getScreenHeight()/3));
-        entities.add(new EnemyUnit(Main.getScreenWidth()*3/4, Main.getScreenHeight()*2/3));
+        entities.add(new PlayerUnit(Main.getScreenWidth()/4, Main.getScreenHeight()/2, this));
+        entities.add(new EnemyUnit(Main.getScreenWidth()*3/4, Main.getScreenHeight()/3, this));
+        entities.add(new EnemyUnit(Main.getScreenWidth()*3/4, Main.getScreenHeight()*2/3, this));
     }
     public void render(Graphics g){
         for(Entity e : entities)
@@ -25,5 +25,9 @@ public class EntityManager {
     }
     public void update(){
 
+    }
+    public ArrayList<Entity> getEntities()
+    {
+        return entities;
     }
 }
