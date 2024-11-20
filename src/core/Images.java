@@ -6,18 +6,18 @@ import org.newdawn.slick.SpriteSheet;
 
 public class Images {
 
-    public static Image placeholderCard;
+    public static Image PLACEHOLDERCARD;
     public static void loadImages()
     {
-//        try
-//        {
-//           // PLACEHOLDER = new Image("res/cards/");
-//
-//        }
-//        catch (SlickException e)
-//        {
-//            e.printStackTrace();
-//        }
+        try
+        {
+            PLACEHOLDERCARD = new Image("res/images/cards/card_template.png");
+
+        }
+        catch (SlickException e)
+        {
+            e.printStackTrace();
+        }
     }
 
 }
