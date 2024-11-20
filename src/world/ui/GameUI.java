@@ -1,5 +1,6 @@
 package world.ui;
 
+import core.Main;
 import org.newdawn.slick.Graphics;
 import world.cards.Card;
 import world.managers.CardManager;
@@ -10,6 +11,7 @@ public class GameUI {
     private Card selectedCard;
     private CardManager cardManager;
     private EntityManager entityManager;
+    private Zone placementZones;
     public GameUI(CardManager cardManager, EntityManager entityManager)
     {
         selected = false;
@@ -20,7 +22,7 @@ public class GameUI {
     {
         if(selected)
         {
-
+            selectionScreen(g);
         }
     }
     public void update()
@@ -39,6 +41,17 @@ public class GameUI {
         }
     }
     public void selectionScreen(Graphics g){
-
+        if(placementZones != null)
+        {
+            placementZones.render(g);
+        }
     }
+    public void setZones(int x, int y)
+    {
+        if(selectedCard.getCardType().equals("SingleTarget"))
+        {
+            placementZones = new Zone((Main.getScreenWidth() /4, Main.getScreenHeight() /4, Main.getScreenWidth() /4*3, Main.getScreenHeight() /4*3);
+        }
+    }
+
 }
