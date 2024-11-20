@@ -8,6 +8,7 @@ public class ExampleCard extends Card{
         super(gc, x, y, rotation);
         cost = 1;
         rarity = 2;
+        cardType = "SingleTarget";
     }
     @Override
     public void action() {

@@ -56,6 +56,10 @@ public class CardManager {
             hand.get(i).moveCard(firstCardX + i * Card.getWidth(), (int) (Main.getScreenHeight()-Card.getHeight()*0.6));
         }
     }
+    public ArrayList<Card> getHand()
+    {
+        return hand;
+    }
     public void updateRotation(Card c)
     {
         double cardX = c.getCenterX();
@@ -77,6 +81,16 @@ public class CardManager {
         }else if(button == 1)
         {
             removeCard(x, y);
+        }
+        else if(button == 0)
+        {
+            for(Card c : hand)
+            {
+                if(c.isOver(x, y))
+                {
+                    c.select(x, y);
+                }
+            }
         }
     }
     public void addCard()
@@ -112,6 +126,12 @@ public class CardManager {
     }
     public void mouseReleased(int button, int x, int y)
     {
-
+        for(Card c : hand)
+        {
+            if(c.selected() && button == 0)
+            {
+                c.unselect(x, y);
+            }
+        }
     }
 }

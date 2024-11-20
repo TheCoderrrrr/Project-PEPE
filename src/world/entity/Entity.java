@@ -11,6 +11,7 @@ public abstract class Entity {
     protected int height;
     protected String name;
     protected int health;
+    protected int position;
     protected EntityManager entityManager;
 
     public Entity(int x, int y, EntityManager entityManager)
