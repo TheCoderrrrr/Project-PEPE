@@ -12,7 +12,6 @@ public class Menu extends BasicGameState
 {
     StateBasedGame sbg;
     private int id;
-    private World world;
     public Menu(int id)
     {
         this.id = id;
@@ -27,17 +26,15 @@ public class Menu extends BasicGameState
     {
         this.sbg = sbg;
         gc.setShowFPS(true);
-        world = new World(gc);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
     {
-        world.update();
     }
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
     {
-        world.render(g);
+
         g.drawString("MENU\nSPACE TO ENTER GAME", (float) Main.getScreenWidth()/2, (float) Main.getScreenHeight()/2);
     }
 

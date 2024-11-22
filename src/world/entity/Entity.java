@@ -14,8 +14,7 @@ public abstract class Entity {
     protected int position;
     protected EntityManager entityManager;
 
-    public Entity(int x, int y, EntityManager entityManager)
-    {
+    public Entity(int x, int y, EntityManager entityManager) {
         this.x = x;
         this.y = y;
         width = 100;
@@ -26,27 +25,26 @@ public abstract class Entity {
     public int getX() {
         return x;
     }
-    public int getY()
-    {
+
+    public int getY() {
         return y;
     }
-    public String getName()
-    {
+
+    public String getName() {
         return name;
     }
-    public int getHealth()
-    {
+
+    public int getHealth() {
         return health;
     }
-    public void render(Graphics g)
-    {
+
+    public void render(Graphics g) {
         g.setColor(Color.white);
         g.fillRect(x, y, width, height);
     }
-    public void die()
-    {
-        if(health <= 0)
-        {
+
+    public void die() {
+        if (health <= 0) {
             entityManager.getEntities().remove(this);
         }
     }

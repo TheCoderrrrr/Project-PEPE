@@ -12,7 +12,6 @@ public class Pause extends BasicGameState
 {
     StateBasedGame sbg;
     private int id;
-    private World world;
     public Pause(int id)
     {
         this.id = id;
@@ -27,17 +26,14 @@ public class Pause extends BasicGameState
     {
         this.sbg = sbg;
         gc.setShowFPS(true);
-        world = new World(gc);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
     {
-        world.update();
     }
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
     {
-        world.render(g);
         g.drawString("PAUSED\nM to go to menu\nP to return to game", (float) Main.getScreenWidth()/2, (float) Main.getScreenHeight()/2);
     }
 

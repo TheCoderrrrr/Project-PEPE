@@ -1,6 +1,8 @@
 package world.ui;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
+import world.entity.Entity;
 
 public class Zone {
     private int x;
@@ -14,9 +16,18 @@ public class Zone {
         this.width = width;
         this.height = height;
     }
+    public Zone(Entity entity)
+    {
+        x = entity.getX() - 100;
+        y = entity.getY() - 100;
+        width = 200;
+        height = 300;
+
+    }
     public void render(Graphics g)
     {
-        g.fillRect(x, y, width, height);
+        g.setColor(Color.red);
+        g.drawRect(x, y, width, height);
     }
     public boolean isOver(int cardX, int cardY)
     {

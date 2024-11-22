@@ -10,10 +10,10 @@ public class World {
     CardManager cardManager;
     EntityManager entityManager;
     GameContainer gc;
-    public World(GameContainer gc) {
+    public World(GameContainer gc, CardManager cardManager, EntityManager entityManager) {
         this.gc = gc;
-        cardManager = new CardManager(gc);
-        entityManager = new EntityManager();
+        this.cardManager = cardManager;
+        this.entityManager = entityManager;
     }
     public void render(Graphics g){
         cardManager.render(g);

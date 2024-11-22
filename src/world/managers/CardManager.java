@@ -13,6 +13,7 @@ public class CardManager {
     private ArrayList<Card> hand;
     private ArrayList<Card> discardPile;
     private ArrayList<Card> Deck;
+    private boolean selectionMode;
     private int totalCardWidth;
     private GameContainer gc;
     public CardManager(GameContainer gc)
@@ -22,6 +23,7 @@ public class CardManager {
         hand.add(new ExampleCard(gc, Main.getScreenWidth()/2, (int) (Main.getScreenHeight()-Card.getHeight()*0.6),0));
         updateTotalCardWidth();
         updateCardPositions();
+        selectionMode = false;
 //        for(Card c: hand)
 //        {
 //            updateRotation(c);
@@ -89,6 +91,7 @@ public class CardManager {
                 if(c.isOver(x, y))
                 {
                     c.select(x, y);
+                    selectionMode = true;
                 }
             }
         }
@@ -124,6 +127,12 @@ public class CardManager {
             }
         }
     }
+    public void useCard(Card c)
+    {
+        hand.remove(c);
+        updateTotalCardWidth();
+        updateCardPositions();
+    }
     public void mouseReleased(int button, int x, int y)
     {
         for(Card c : hand)
@@ -131,7 +140,12 @@ public class CardManager {
             if(c.selected() && button == 0)
             {
                 c.unselect(x, y);
+                selectionMode = false;
             }
         }
+    }
+    public boolean getSelectionMode()
+    {
+        return selectionMode;
     }
 }

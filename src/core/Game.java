@@ -7,12 +7,17 @@ import world.World;
 import world.cards.Card;
 import world.cards.ExampleCard;
 import world.managers.CardManager;
+import world.managers.EntityManager;
+import world.ui.GameUI;
 
 public class Game extends BasicGameState 
 {
 	StateBasedGame sbg;
 	private int id;
+	CardManager cardManager;
+	EntityManager entityManager;
 	private World world;
+	private GameUI ui;
 	public Game(int id) 
 	{
 		this.id = id;
@@ -27,17 +32,22 @@ public class Game extends BasicGameState
 	{
 		this.sbg = sbg;
 		gc.setShowFPS(true);
-		world = new World(gc);
+		cardManager = new CardManager(gc);
+		entityManager = new EntityManager();
+		world = new World(gc, cardManager, entityManager);
+		ui = new GameUI(cardManager, entityManager);
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
 	{
 		world.update();
+		ui.update();
 	}
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException 
 	{
 		world.render(g);
+		ui.render(g);
 	}
 	
 	public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException 
@@ -59,11 +69,10 @@ public class Game extends BasicGameState
 	public void mousePressed(int button, int x, int y)
 	{
 		world.mousePressed(button, x, y);
-		System.out.println(button + " : " + x + " : " + y);
 	}
 	public void mouseReleased(int button, int x, int y){
 		world.mouseReleased(button, x, y);
-		System.out.println(button + " : " + x + " : " + y);
+		ui.mouseReleased(button, x, y);
 	}
 	
 
