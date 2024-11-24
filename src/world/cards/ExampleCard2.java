@@ -1,17 +1,15 @@
 package world.cards;
 
+import core.Images;
 import org.newdawn.slick.GameContainer;
 
-public class ExampleCard2 extends Card{
+public class ExampleCard2 extends GlobalCard{
 
-    public ExampleCard2(GameContainer gc, int x, int y, int rotation){
-        super(gc, x, y, rotation);
+    public ExampleCard2(GameContainer gc){
+        super(gc);
         cost = 1;
         rarity = 2;
-        cardType = "MultiTarget";
+        image = Images.PLACEHOLDERCARD;
     }
-    @Override
-    public void action() {
 
-    }
 }

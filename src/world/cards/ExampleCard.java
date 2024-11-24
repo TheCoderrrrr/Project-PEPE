@@ -1,17 +1,19 @@
 package world.cards;
 
 import org.newdawn.slick.GameContainer;
+import world.entity.Entity;
 
-public class ExampleCard extends Card{
+public class ExampleCard extends TargetedCard {
 
-    public ExampleCard(GameContainer gc, int x, int y, int rotation){
-        super(gc, x, y, rotation);
+    public ExampleCard(GameContainer gc){
+        super(gc);
         cost = 1;
         rarity = 2;
-        cardType = "SingleTarget";
     }
-    @Override
-    public void action() {
 
+    public void action(Entity e)
+    {
+        e.takeDamage(10);
     }
+
 }

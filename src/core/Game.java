@@ -32,6 +32,7 @@ public class Game extends BasicGameState
 	{
 		this.sbg = sbg;
 		gc.setShowFPS(true);
+		Images.loadImages();
 		cardManager = new CardManager(gc);
 		entityManager = new EntityManager();
 		world = new World(gc, cardManager, entityManager);
@@ -41,7 +42,6 @@ public class Game extends BasicGameState
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
 	{
 		world.update();
-		ui.update();
 	}
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException 
@@ -64,11 +64,17 @@ public class Game extends BasicGameState
 		{
 			sbg.enterState(Main.PAUSE_ID);
 		}
+		if(key == Input.KEY_SPACE)
+		{
+			world.nextTurn();
+		}
 	}
 	
 	public void mousePressed(int button, int x, int y)
 	{
 		world.mousePressed(button, x, y);
+		ui.mousePressed(button,x , y);
+
 	}
 	public void mouseReleased(int button, int x, int y){
 		world.mouseReleased(button, x, y);

@@ -4,31 +4,42 @@ import core.Game;
 import core.Main;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import world.cards.Card;
-import world.cards.ExampleCard;
-import world.cards.ExampleCard2;
+import world.cards.*;
+import world.entity.Entity;
 
 import java.util.ArrayList;
 
 public class CardManager {
+    private static final int HAND_SIZE = 5;
     private ArrayList<Card> hand;
-    private ArrayList<Card> discardPile;
-    private ArrayList<Card> Deck;
+    private ArrayList<Card> deck;
+    private ArrayList<Card> discard;
     private boolean selectionMode;
     private int totalCardWidth;
     private GameContainer gc;
     public CardManager(GameContainer gc)
     {
         this.gc = gc;
+        deck = new ArrayList<>();
         hand = new ArrayList<>();
-        hand.add(new ExampleCard(gc, Main.getScreenWidth()/2, (int) (Main.getScreenHeight()-Card.getHeight()*0.6),0));
+        discard = new ArrayList<>();
         updateTotalCardWidth();
         updateCardPositions();
         selectionMode = false;
-//        for(Card c: hand)
-//        {
-//            updateRotation(c);
-//        }
+
+        //populate deck
+
+        for(int i=0; i<30; i++)
+        {
+            if(Math.random() < 0.5) {
+                deck.add(new ExampleCard2(gc));
+            } else {
+                deck.add(new ExampleDebuffCard(gc));
+            }
+        }
+
+        //populate hand
+        endTurn();
     }
     public GameContainer getGC()
     {
@@ -37,7 +48,22 @@ public class CardManager {
 
     public void update()
     {
+//        overCard();
+    }
 
+    public void endTurn()
+    {
+        //add all unused cards back to deck
+        deck.addAll(hand);
+        hand.clear();
+
+        //randomly pick cards from deck
+        for(int i=0; i<HAND_SIZE; i++)
+        {
+            hand.add(deck.remove((int) (Math.random() * deck.size())));
+        }
+        updateTotalCardWidth();
+        updateCardPositions();
     }
     public void render(Graphics g)
     {
@@ -78,10 +104,7 @@ public class CardManager {
     }
     public void mousePressed(int button, int x, int y)
     {
-        if(button == 2)
-        {
-            addCard();
-        }else if(button == 1)
+        if(button == 1)
         {
             removeCard(x, y);
         }
@@ -97,33 +120,17 @@ public class CardManager {
             }
         }
     }
-    public void addCard()
-    {
-//        int i = 0;
-        if(Math.random() < .5)
-        {
-            hand.add(new ExampleCard(gc, Main.getScreenWidth()/2, (int) (Main.getScreenHeight()-Card.getHeight()*0.6), 0));
-        }
-        else{
-            hand.add(new ExampleCard2(gc, Main.getScreenWidth()/2, Main.getScreenHeight(), 0));
-        }
-        updateTotalCardWidth();
-        updateCardPositions();
-//        for(Card c: hand)
-//        {
-//            updateRotation(c);
-//            i++;
-//            System.out.println("number card : " + i + " , rotation : " + c.getRotation());
-//        }
-//        i = 0;
-    }
+
     public void removeCard(int x, int y)
     {
         for(int i = 0; i < hand.size(); i++)
         {
             if(hand.get(i).isOver(x, y))
             {
-                hand.remove(i);
+                //
+                deck.add(hand.remove(i));
+                //
+
                 updateTotalCardWidth();
                 updateCardPositions();
 //                for(Card c: hand)
@@ -134,12 +141,29 @@ public class CardManager {
             }
         }
     }
-    public void useCard(Card c)
+    public void useCard(Card c, Entity e)
     {
+        c.action(e);
+        if(c instanceof StatusEffect) {
+            ((StatusEffect) c).applyEffect(e);
+        }
         hand.remove(c);
         updateTotalCardWidth();
         updateCardPositions();
     }
+//    public void overCard()
+//    {
+//        for(Card c : hand)
+//        {
+//            if(c.isOver(gc.getInput().getMouseX(), gc.getInput().getMouseY()))
+//            {
+//                c.moveCard(c.getX(), c.getY() - 100);
+//            }
+//            else {
+//                c.originalPos();
+//            }
+//        }
+//    }
     public void mouseReleased(int button, int x, int y)
     {
         for(Card c : hand)

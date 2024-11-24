@@ -38,7 +38,6 @@ public class GameUI {
     {
         updateSelected();
         setZones();
-        System.out.println(selected);
     }
     public void updateSelected()
     {
@@ -68,11 +67,11 @@ public class GameUI {
     }
     public void setZones()
     {
-        if(selectedCard != null && selectedCard.getCardType().equals("SingleTarget") )
+        if(selectedCard != null && selectedCard.getCardType().equals("MultiTarget") )
         {
             zones.add(new Zone(Main.getScreenWidth() /5, Main.getScreenHeight() /5, Main.getScreenWidth()/5 * 3, Main.getScreenHeight() /5 * 3));
         }
-        else if(selectedCard != null && selectedCard.getCardType().equals("MultiTarget"))
+        else if(selectedCard != null && selectedCard.getCardType().equals("SingleTarget"))
         {
             for(Entity e : entityManager.getEntities())
             {
@@ -84,32 +83,16 @@ public class GameUI {
         }
         if(selectedCard == null)
         {
-            for(int i = zones.size(); i > 0; i--)
-            {
-                zones.remove(i - 1);
-            }
+            zones.clear();
         }
     }
-    public void useCard(Card c, int x, int y) {
-        for(Zone z: zones)
-        {
-            if(z.isOver(x, y))
-            {
-                cardManager.useCard(c);
-            }
-            else {
-                c.moveCard((int)c.originalPos().x, (int)c.originalPos().y);
-            }
-        }
-
-    }
-    public void useCard(Card c,Entity e, int x, int y)
+    public void useCard(Card c, int x, int y)
     {
         for(Zone z: zones)
         {
             if(z.isOver(x, y))
             {
-                cardManager.useCard(c);
+                cardManager.useCard(c, z.getEntity());
             }
             else {
                 c.moveCard((int)c.originalPos().x, (int)c.originalPos().y);
@@ -122,5 +105,12 @@ public class GameUI {
         {
             useCard(selectedCard,x , y);
         }
+        updateSelected();
+        setZones();
+    }
+    public void mousePressed(int button, int x, int y)
+    {
+        updateSelected();
+        setZones();
     }
 }

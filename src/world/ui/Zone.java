@@ -9,6 +9,7 @@ public class Zone {
     private int y;
     private int width;
     private int height;
+    private Entity entity;
     public Zone(int x, int y, int width, int height)
     {
         this.x = x;
@@ -18,6 +19,7 @@ public class Zone {
     }
     public Zone(Entity entity)
     {
+        this.entity = entity;
         x = entity.getX() - 100;
         y = entity.getY() - 100;
         width = 200;
@@ -32,5 +34,9 @@ public class Zone {
     public boolean isOver(int cardX, int cardY)
     {
         return cardX > x && cardX < x + width && cardY > y && cardY < y + height;
+    }
+    public Entity getEntity()
+    {
+        return entity;
     }
 }
