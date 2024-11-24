@@ -4,6 +4,8 @@ import core.Main;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import world.cards.Card;
+import world.entity.EnemyUnit;
+import world.entity.Entity;
 import world.managers.CardManager;
 import world.managers.EntityManager;
 
@@ -19,6 +21,7 @@ public class GameUI {
     public GameUI(CardManager cardManager, EntityManager entityManager)
     {
         selected = false;
+        zones = new ArrayList<>();
         this.cardManager = cardManager;
         this.entityManager = entityManager;
     }
@@ -55,9 +58,12 @@ public class GameUI {
         }
     }
     public void selectionScreen(Graphics g){
-        if(placementZones != null)
+        if(!zones.isEmpty())
         {
-            placementZones.render(g);
+            for(Zone z : zones)
+            {
+                z.render(g);
+            }
         }
     }
     public void setZones()
@@ -66,15 +72,48 @@ public class GameUI {
         {
             zones.add(new Zone(Main.getScreenWidth() /5, Main.getScreenHeight() /5, Main.getScreenWidth()/5 * 3, Main.getScreenHeight() /5 * 3));
         }
+        else if(selectedCard != null && selectedCard.getCardType().equals("MultiTarget"))
+        {
+            for(Entity e : entityManager.getEntities())
+            {
+                if(e instanceof EnemyUnit)
+                {
+                    zones.add(new Zone(e));
+                }
+            }
+        }
         if(selectedCard == null)
         {
-            zones.removeAll();
+            for(int i = zones.size(); i > 0; i--)
+            {
+                zones.remove(i - 1);
+            }
         }
     }
     public void useCard(Card c, int x, int y) {
-        if(placementZones.isOver(x, y))
+        for(Zone z: zones)
         {
-            cardManager.useCard(c);
+            if(z.isOver(x, y))
+            {
+                cardManager.useCard(c);
+            }
+            else {
+                c.moveCard((int)c.originalPos().x, (int)c.originalPos().y);
+            }
+        }
+
+    }
+    public void useCard(Card c,Entity e, int x, int y)
+    {
+        for(Zone z: zones)
+        {
+            if(z.isOver(x, y))
+            {
+                cardManager.useCard(c);
+            }
+            else {
+                c.moveCard((int)c.originalPos().x, (int)c.originalPos().y);
+            }
         }
     }
     public void mouseReleased(int button, int x, int y)

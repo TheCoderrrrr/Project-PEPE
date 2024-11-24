@@ -1,8 +1,12 @@
 package world.cards;
 
+import org.lwjgl.util.vector.Vector2f;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+
+import java.util.ArrayList;
+import java.util.Vector;
 
 public abstract class Card {
     protected int cost;
@@ -11,6 +15,8 @@ public abstract class Card {
     protected final static int height = 300;
     protected int x;
     protected int y;
+    protected int originalX;
+    protected int originalY;
     protected int centerX;
     protected int centerY;
     protected int translationalX;
@@ -37,6 +43,7 @@ public abstract class Card {
         {
             g.rotate(centerX, centerY, rotation);
             g.drawRect(x, y, width, height);
+            g.drawString(cardType, x, y);
         }
         else {
             g.drawRect(gc.getInput().getMouseX() - translationalX, gc.getInput().getMouseY() - translationalY, width, height);
@@ -53,6 +60,8 @@ public abstract class Card {
     public void select(int x, int y)
     {
         selected = true;
+        originalX = this.x;
+        originalY = this.y;
         translationalX = x - this.x;
         translationalY = y - this.y;
 
@@ -61,8 +70,11 @@ public abstract class Card {
     {
         selected = false;
         this.x = x - translationalX;
-        this.y = y - translationalY
-        ;
+        this.y = y - translationalY;
+    }
+    public Vector2f originalPos()
+    {
+        return new Vector2f(originalX, originalY);
     }
     public boolean selected()
     {

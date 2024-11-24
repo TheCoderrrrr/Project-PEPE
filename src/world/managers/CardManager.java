@@ -6,6 +6,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import world.cards.Card;
 import world.cards.ExampleCard;
+import world.cards.ExampleCard2;
 
 import java.util.ArrayList;
 
@@ -99,7 +100,13 @@ public class CardManager {
     public void addCard()
     {
 //        int i = 0;
-        hand.add(new ExampleCard(gc, Main.getScreenWidth()/2, (int) (Main.getScreenHeight()-Card.getHeight()*0.6), 0));
+        if(Math.random() < .5)
+        {
+            hand.add(new ExampleCard(gc, Main.getScreenWidth()/2, (int) (Main.getScreenHeight()-Card.getHeight()*0.6), 0));
+        }
+        else{
+            hand.add(new ExampleCard2(gc, Main.getScreenWidth()/2, Main.getScreenHeight(), 0));
+        }
         updateTotalCardWidth();
         updateCardPositions();
 //        for(Card c: hand)
