@@ -33,6 +33,7 @@ public class GameUI {
         }
         g.setColor(Color.red);
         g.drawRect(100, 100, 200, 200);
+        renderHealthBars(g);
     }
     public void update()
     {
@@ -54,6 +55,15 @@ public class GameUI {
         }else{
             selected = false;
             selectedCard = null;
+        }
+    }
+    public void renderHealthBars(Graphics g){
+        for(Entity e : entityManager.getEntities())
+        {
+            g.setColor(Color.white);
+            g.fillRect((float) e.getX(), (float) (e.getY() + e.getHeight()), (float) e.getWidth(), (float) (Main.getScreenHeight() * 0.01));
+            g.setColor(Color.red);
+            g.fillRect((float) e.getX(), (float) (e.getY() + e.getHeight()), (float) e.getWidth() * e.getPercentHealthLeft(), (float) (Main.getScreenHeight() * 0.01));
         }
     }
     public void selectionScreen(Graphics g){
@@ -92,7 +102,13 @@ public class GameUI {
         {
             if(z.isOver(x, y))
             {
-                cardManager.useCard(c, z.getEntity());
+                if(z.getEntity() != null)
+                {
+                    cardManager.useCard(c, z.getEntity());
+                }
+                else{
+                    cardManager.useCard(c, entityManager.getEntities());
+                }
             }
             else {
                 c.moveCard((int)c.originalPos().x, (int)c.originalPos().y);

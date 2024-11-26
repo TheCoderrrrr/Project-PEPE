@@ -14,7 +14,8 @@ public abstract class Entity {
     protected int width;
     protected int height;
     protected String name;
-    protected int health;
+    protected int maxHealth;
+    protected int curHealth;
     protected int position;
     protected EntityManager entityManager;
     protected ArrayList<Effect> activeEffects;
@@ -25,7 +26,8 @@ public abstract class Entity {
         this.y = y;
         width = 100;
         height = 200;
-        health = 99999;
+        curHealth = 100;
+        maxHealth = curHealth;
     }
 
     public void endTurn() {
@@ -52,8 +54,16 @@ public abstract class Entity {
         return name;
     }
 
-    public int getHealth() {
-        return health;
+    public int getMaxHealth()
+    {
+        return maxHealth;
+    }
+    public float getPercentHealthLeft()
+    {
+        return (float) curHealth / (float) maxHealth;
+    }
+    public int getCurHealth() {
+        return curHealth;
     }
     public void takeDamage(int damage)
     {
@@ -63,7 +73,7 @@ public abstract class Entity {
                 multiplier += ((Mark) e).getMultiplier();
             }
         }
-        health = Math.max(0, health - Math.round(damage * multiplier));
+        curHealth = Math.max(0, curHealth - Math.round(damage * multiplier));
     }
     public void addEffect(Effect e) {activeEffects.add(e);}
 
@@ -71,8 +81,15 @@ public abstract class Entity {
         g.setColor(Color.white);
         g.fillRect(x, y, width, height);
         g.setColor(Color.blue);
-        g.drawString(""+health, x, y);
+        g.drawString(""+ curHealth, x, y);
     }
-
+    public int getWidth()
+    {
+        return width;
+    }
+    public int getHeight()
+    {
+        return height;
+    }
 
 }

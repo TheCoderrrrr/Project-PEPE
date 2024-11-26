@@ -28,7 +28,7 @@ public class EntityManager {
         {
             if(entities.get(i) instanceof EnemyUnit)
             {
-                if(entities.get(i).getHealth() <= 0)
+                if(entities.get(i).getCurHealth() <= 0)
                 {
                     entities.remove(i);
                     i--;

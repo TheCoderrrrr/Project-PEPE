@@ -48,7 +48,7 @@ public class CardManager {
 
     public void update()
     {
-//        overCard();
+        overCard();
     }
 
     public void endTurn()
@@ -151,19 +151,30 @@ public class CardManager {
         updateTotalCardWidth();
         updateCardPositions();
     }
-//    public void overCard()
-//    {
-//        for(Card c : hand)
-//        {
-//            if(c.isOver(gc.getInput().getMouseX(), gc.getInput().getMouseY()))
-//            {
-//                c.moveCard(c.getX(), c.getY() - 100);
-//            }
-//            else {
-//                c.originalPos();
-//            }
-//        }
-//    }
+    public void useCard(Card c, ArrayList<Entity> entities)
+    {
+        c.action(entities);
+        if(c instanceof StatusEffect) {
+            for(Entity e : entities)
+            ((StatusEffect) c).applyEffect(e);
+        }
+        hand.remove(c);
+        updateTotalCardWidth();
+        updateCardPositions();
+    }
+    public void overCard()
+    {
+        for(Card c : hand)
+        {
+            if(c.isOver(gc.getInput().getMouseX(), gc.getInput().getMouseY()))
+            {
+                c.hoveredPos();
+            }
+            else {
+                c.defaultPos();
+            }
+        }
+    }
     public void mouseReleased(int button, int x, int y)
     {
         for(Card c : hand)

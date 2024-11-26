@@ -1,12 +1,15 @@
 package world.cards;
 
 import core.Images;
+import core.Main;
 import org.lwjgl.util.vector.Vector2f;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import world.effects.Effect;
 import world.entity.Entity;
+
+import java.util.ArrayList;
 
 public abstract class Card {
     protected int cost;
@@ -37,8 +40,12 @@ public abstract class Card {
         selected = false;
         image = Images.PLACEHOLDERCARD;
     }
-
+    //only for single target cards
     public void action(Entity e) {
+
+    }
+    //only for multi targeted/global cards
+    public void action(ArrayList<Entity> entities) {
 
     }
 
@@ -99,7 +106,12 @@ public abstract class Card {
         this.x = x;
         this.y = y;
     }
-
+    public void hoveredPos(){
+        y = Main.getScreenHeight() - height;
+    }
+    public void defaultPos(){
+        y = (int) (Main.getScreenHeight() - height * 0.6);
+    }
 
     public boolean isOver(int mX, int mY) {
         return x <= mX && x + width > mX && y <= mY && y + height > mY;

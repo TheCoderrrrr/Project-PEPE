@@ -17,7 +17,7 @@ public class World {
         this.entityManager = entityManager;
     }
     public void render(Graphics g){
-        g.drawString(STR."\{turn}", 100, 100);
+        g.drawString(" " + turn , 100, 100);
         cardManager.render(g);
         entityManager.render(g);
     }
