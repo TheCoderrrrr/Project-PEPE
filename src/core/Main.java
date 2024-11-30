@@ -14,6 +14,7 @@ public class Main extends StateBasedGame
 	public static final int MENU_ID = 0;
     public static final int GAME_ID = 1;
 	public static final int PAUSE_ID = 2;
+	public static final int CARD_SELECTION_ID = 3;
 
 	private BasicGameState menu;
     private BasicGameState game;
@@ -26,6 +27,7 @@ public class Main extends StateBasedGame
 		menu = new Menu(MENU_ID);
 		game = new Game(GAME_ID);
 		pause = new Pause(PAUSE_ID);
+
 	}
 
 	public static int getScreenWidth()

@@ -2,18 +2,22 @@ package world.managers;
 
 import core.Game;
 import core.Main;
+import core.Sounds;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import world.World;
 import world.cards.*;
 import world.entity.Entity;
 
 import java.util.ArrayList;
 
 public class CardManager {
+    private final ArrayList<Class<? extends Card>> cards;
     private static final int HAND_SIZE = 5;
     private ArrayList<Card> hand;
     private ArrayList<Card> deck;
     private ArrayList<Card> discard;
+    private ArrayList<Card> selection;
     private boolean selectionMode;
     private int totalCardWidth;
     private GameContainer gc;
@@ -23,11 +27,18 @@ public class CardManager {
         deck = new ArrayList<>();
         hand = new ArrayList<>();
         discard = new ArrayList<>();
+        selection = new ArrayList<>();
         updateTotalCardWidth();
         updateCardPositions();
         selectionMode = false;
 
         //populate deck
+        cards = new ArrayList<>();
+        cards.add(ExampleBuffCard.class);
+        cards.add(ExampleCard.class);
+        cards.add(ExampleCard2.class);
+        cards.add(ExampleDebuffCard.class);
+
 
         for(int i=0; i<30; i++)
         {
@@ -39,20 +50,22 @@ public class CardManager {
         }
 
         //populate hand
-        endTurn();
+        resetHand();
     }
     public GameContainer getGC()
     {
         return gc;
     }
-
     public void update()
     {
         overCard();
     }
-
     public void endTurn()
     {
+        World.setPlayerTurn(false);
+    }
+    //call when the enemy ends their turn
+    public void resetHand(){
         //add all unused cards back to deck
         deck.addAll(hand);
         hand.clear();
@@ -64,6 +77,20 @@ public class CardManager {
         }
         updateTotalCardWidth();
         updateCardPositions();
+    }
+
+    //call this method when all enemies have been defeated
+    public void newRound() {
+        resetHand();
+        selection = new ArrayList<>();
+        for(int i=0; i<3; i++) {
+            try{
+                selection.add(cards.get((int) (Math.random() * selection.size())).getDeclaredConstructor(GameContainer.class).newInstance(gc));
+                selection.getLast().moveCard(i * Main.getScreenWidth()/3, Main.getScreenHeight()/2);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
     public void render(Graphics g)
     {
@@ -148,6 +175,7 @@ public class CardManager {
             ((StatusEffect) c).applyEffect(e);
         }
         hand.remove(c);
+        deck.add(c);
         updateTotalCardWidth();
         updateCardPositions();
     }
@@ -159,6 +187,7 @@ public class CardManager {
             ((StatusEffect) c).applyEffect(e);
         }
         hand.remove(c);
+        deck.add(c);
         updateTotalCardWidth();
         updateCardPositions();
     }

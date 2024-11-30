@@ -6,16 +6,17 @@ import org.newdawn.slick.state.StateBasedGame;
 import world.World;
 import world.cards.Card;
 import world.cards.ExampleCard;
+import world.entity.PlayerUnit;
 import world.managers.CardManager;
 import world.managers.EntityManager;
 import world.ui.GameUI;
 
 public class Game extends BasicGameState 
 {
-	StateBasedGame sbg;
+	private StateBasedGame sbg;
 	private int id;
-	CardManager cardManager;
-	EntityManager entityManager;
+	private CardManager cardManager;
+	private EntityManager entityManager;
 	private World world;
 	private GameUI ui;
 	public Game(int id) 
@@ -33,19 +34,22 @@ public class Game extends BasicGameState
 		this.sbg = sbg;
 		gc.setShowFPS(true);
 		Images.loadImages();
+		Sounds.loadMusic();
 		cardManager = new CardManager(gc);
 		entityManager = new EntityManager();
 		world = new World(gc, cardManager, entityManager);
 		ui = new GameUI(cardManager, entityManager);
+		Sounds.BGMUSIC1.loop(1F, .4F);
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
 	{
-		world.update();
+		world.update(delta);
 	}
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException 
 	{
+		g.drawImage(Images.BACKGROUND.getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight()), 0, 0);
 		world.render(g);
 		ui.render(g);
 	}
@@ -66,7 +70,13 @@ public class Game extends BasicGameState
 		}
 		if(key == Input.KEY_SPACE)
 		{
-			world.nextTurn();
+			if(World.isPlayerTurn())
+			{
+				world.endPlayerTurn();
+			}
+		}
+		if(key == Input.KEY_Q) {
+			world.entityManager.getEntities().removeIf(entity -> !(entity instanceof PlayerUnit));
 		}
 	}
 	
