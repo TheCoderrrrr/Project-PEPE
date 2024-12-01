@@ -15,6 +15,10 @@ public class EntityManager {
     {
         entities = new ArrayList<>();
         entities.add(new PlayerUnit(Main.getScreenWidth()/4, Main.getScreenHeight()/2));
+        newRound();
+    }
+
+    public void newRound() {
         entities.add(new EnemyUnit(Main.getScreenWidth()*3/4, Main.getScreenHeight()/3));
         entities.add(new EnemyUnit(Main.getScreenWidth()*3/4, Main.getScreenHeight()*2/3));
     }

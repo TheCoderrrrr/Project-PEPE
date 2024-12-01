@@ -6,8 +6,8 @@ import world.entity.Entity;
 
 public class ExampleBuffCard extends TargetedCard implements StatusEffect{
 
-    public ExampleBuffCard(GameContainer gc) {
-        super(gc);
+    public ExampleBuffCard() {
+        super();
     }
 
     @Override

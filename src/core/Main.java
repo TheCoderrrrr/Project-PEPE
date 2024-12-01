@@ -19,6 +19,7 @@ public class Main extends StateBasedGame
 	private BasicGameState menu;
     private BasicGameState game;
 	private BasicGameState pause;
+	private BasicGameState cardSelection;
     
 	public Main(String name) 
 	{
@@ -27,6 +28,7 @@ public class Main extends StateBasedGame
 		menu = new Menu(MENU_ID);
 		game = new Game(GAME_ID);
 		pause = new Pause(PAUSE_ID);
+		cardSelection = new CardSelection(CARD_SELECTION_ID);
 
 	}
 
@@ -46,6 +48,7 @@ public class Main extends StateBasedGame
 		addState(menu);
 		addState(game);
 		addState(pause);
+		addState(cardSelection);
 	}
 
 	public static void main(String[] args) 

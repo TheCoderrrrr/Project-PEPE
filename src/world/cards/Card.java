@@ -3,12 +3,14 @@ package world.cards;
 import core.Images;
 import core.Main;
 import org.lwjgl.util.vector.Vector2f;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import world.effects.Effect;
 import world.entity.Entity;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public abstract class Card {
@@ -28,18 +30,22 @@ public abstract class Card {
     protected boolean selected;
     protected int target;
     protected String cardType;
-    protected GameContainer gc;
+    protected static GameContainer gc;
     protected Image image;
     protected int energyCost;
     protected Effect effect;
+    protected boolean outlined;
 
-    public Card(GameContainer gc) {
+    public Card() {
         centerX = x + width / 2;
         centerY = y + height / 2;
-        this.gc = gc;
         selected = false;
         energyCost = 2;
         image = Images.PLACEHOLDERCARD;
+    }
+
+    public static void setgc(GameContainer gc) {
+        Card.gc = gc;
     }
     //only for single target cards
     public void action(Entity e) {
@@ -52,11 +58,14 @@ public abstract class Card {
 
     public void render(Graphics g) {
         if (!selected) {
-
             g.drawImage(image, x, y);
             g.drawString(getClass().getSimpleName(), x, y);
         } else {
             g.drawImage(image, gc.getInput().getMouseX() - translationalX, gc.getInput().getMouseY() - translationalY);
+        }
+        g.setColor(Color.white);
+        if(outlined) {
+            g.drawRect(x - 5, y - 5, width + 10, height + 10);
         }
     }
 
@@ -66,6 +75,10 @@ public abstract class Card {
 
     public String getCardType() {
         return cardType;
+    }
+
+    public boolean isOutlined() {
+        return outlined;
     }
 
     public void select(int x, int y) {
@@ -81,6 +94,14 @@ public abstract class Card {
         selected = false;
         this.x = x - translationalX;
         this.y = y - translationalY;
+    }
+
+    public void outline() {
+        outlined = true;
+    }
+
+    public void unoutline() {
+        outlined = false;
     }
 
     public Vector2f originalPos() {

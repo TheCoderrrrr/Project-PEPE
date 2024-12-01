@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 public class ExampleCard2 extends GlobalCard{
 
-    public ExampleCard2(GameContainer gc){
-        super(gc);
+    public ExampleCard2(){
+        super();
         cost = 1;
         rarity = 2;
         image = Images.PLACEHOLDERCARD;

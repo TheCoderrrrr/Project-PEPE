@@ -10,26 +10,24 @@ import world.cards.*;
 import world.entity.Entity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CardManager {
-    private final ArrayList<Class<? extends Card>> cards;
     private static final int HAND_SIZE = 5;
-    private ArrayList<Card> hand;
-    private ArrayList<Card> deck;
-    private ArrayList<Card> discard;
-    private ArrayList<Card> selection;
-    private boolean selectionMode;
-    private int totalCardWidth;
-    private GameContainer gc;
-    private int totalEnergy;
-    private int maximumEnergy;
+    private static ArrayList<Card> hand;
+    private static ArrayList<Card> deck;
+    private static ArrayList<Card> discard;
+    private static boolean selectionMode;
+    private static int totalCardWidth;
+    private static GameContainer gc;
+    private static int totalEnergy;
+    private static int maximumEnergy;
 
     public CardManager(GameContainer gc) {
-        this.gc = gc;
+        CardManager.gc = gc;
         deck = new ArrayList<>();
         hand = new ArrayList<>();
         discard = new ArrayList<>();
-        selection = new ArrayList<>();
         updateTotalCardWidth();
         updateCardPositions();
         selectionMode = false;
@@ -37,18 +35,11 @@ public class CardManager {
         maximumEnergy = totalEnergy;
 
         //populate deck
-        cards = new ArrayList<>();
-        cards.add(ExampleBuffCard.class);
-        cards.add(ExampleCard.class);
-        cards.add(ExampleCard2.class);
-        cards.add(ExampleDebuffCard.class);
-
-
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 5; i++) {
             if (Math.random() < 0.5) {
-                deck.add(new ExampleCard2(gc));
+                deck.add(new ExampleCard2());
             } else {
-                deck.add(new ExampleDebuffCard(gc));
+                deck.add(new ExampleDebuffCard());
             }
         }
 
@@ -56,20 +47,21 @@ public class CardManager {
         resetHand();
     }
 
-    public GameContainer getGC() {
-        return gc;
-    }
 
-    public void update() {
+    public static void update() {
         overCard();
     }
 
-    public void endTurn() {
+    public static void addCardToDeck(Card c) {
+        deck.add(c);
+    }
+
+    public static void endTurn() {
         World.setPlayerTurn(false);
     }
 
     //call when the enemy ends their turn
-    public void resetHand() {
+    public static void resetHand() {
         //add all unused cards back to deck
         deck.addAll(hand);
         hand.clear();
@@ -81,36 +73,23 @@ public class CardManager {
         updateTotalCardWidth();
         updateCardPositions();
     }
-    public void resetEnergy()
+    public static void resetEnergy()
     {
         totalEnergy = maximumEnergy;
     }
 
-    //call this method when all enemies have been defeated
-    public void newRound() {
-        resetHand();
-        selection = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            try {
-                selection.add(cards.get((int) (Math.random() * selection.size())).getDeclaredConstructor(GameContainer.class).newInstance(gc));
-                selection.getLast().moveCard(i * Main.getScreenWidth() / 3, Main.getScreenHeight() / 2);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
 
-    public void render(Graphics g) {
+    public static void render(Graphics g) {
         for (Card c : hand) {
             c.render(g);
         }
     }
 
-    public void updateTotalCardWidth() {
+    public static void updateTotalCardWidth() {
         totalCardWidth = Card.getWidth() * hand.size();
     }
 
-    public void updateCardPositions() {
+    public static void updateCardPositions() {
         int zeroPos = Main.getScreenWidth() / 2;
         int firstCardX = zeroPos - totalCardWidth / 2;
         for (int i = 0; i < hand.size(); i++) {
@@ -118,11 +97,11 @@ public class CardManager {
         }
     }
 
-    public ArrayList<Card> getHand() {
+    public static ArrayList<Card> getHand() {
         return hand;
     }
 
-    public void updateRotation(Card c) {
+    public static void updateRotation(Card c) {
         double cardX = c.getCenterX();
         double cardY = c.getCenterY();
         double zeroX = (double) Main.getScreenWidth() / 2;
@@ -135,7 +114,7 @@ public class CardManager {
         c.setRotation(rotation);
     }
 
-    public void mousePressed(int button, int x, int y) {
+    public static void mousePressed(int button, int x, int y) {
         if (button == 1) {
             removeCard(x, y);
         } else if (button == 0) {
@@ -148,7 +127,7 @@ public class CardManager {
         }
     }
 
-    public void removeCard(int x, int y) {
+    public static void removeCard(int x, int y) {
         for (int i = 0; i < hand.size(); i++) {
             if (hand.get(i).isOver(x, y)) {
                 //
@@ -166,7 +145,7 @@ public class CardManager {
         }
     }
 
-    public void useCard(Card c, Entity e) {
+    public static void useCard(Card c, Entity e) {
         c.action(e);
         if (c instanceof StatusEffect) {
             ((StatusEffect) c).applyEffect(e);
@@ -180,7 +159,7 @@ public class CardManager {
 
     }
 
-    public void useCard(Card c, ArrayList<Entity> entities) {
+    public static void useCard(Card c, ArrayList<Entity> entities) {
 
         c.action(entities);
         if (c instanceof StatusEffect) {
@@ -195,7 +174,7 @@ public class CardManager {
         totalEnergy -= c.getEnergyCost();
     }
 
-    public void overCard() {
+    public static void overCard() {
         for (Card c : hand) {
             if (c.isOver(gc.getInput().getMouseX(), gc.getInput().getMouseY())) {
                 c.hoveredPos();
@@ -205,7 +184,7 @@ public class CardManager {
         }
     }
 
-    public void mouseReleased(int button, int x, int y) {
+    public static void mouseReleased(int button, int x, int y) {
         for (Card c : hand) {
             if (c.selected() && button == 0) {
                 c.unselect(x, y);
@@ -214,19 +193,19 @@ public class CardManager {
         }
     }
 
-    public boolean getSelectionMode() {
+    public static boolean getSelectionMode() {
         return selectionMode;
     }
 
-    public int getCurEnergy() {
+    public static int getCurEnergy() {
         return totalEnergy;
     }
 
-    public int getMaximumEnergy() {
+    public static int getMaximumEnergy() {
         return maximumEnergy;
     }
 
-    public boolean enoughEnergy(Card c) {
+    public static boolean enoughEnergy(Card c) {
         return !(totalEnergy - c.getEnergyCost() < 0);
     }
 }

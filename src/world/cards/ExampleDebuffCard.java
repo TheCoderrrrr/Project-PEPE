@@ -6,8 +6,8 @@ import world.entity.Entity;
 
 public class ExampleDebuffCard extends TargetedCard implements StatusEffect{
 
-    public ExampleDebuffCard(GameContainer gc) {
-        super(gc);
+    public ExampleDebuffCard() {
+        super();
     }
 
     public void action(Entity e) {

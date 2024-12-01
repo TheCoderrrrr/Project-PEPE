@@ -15,7 +15,7 @@ public abstract class Entity {
     protected int height;
     protected int critRate;
     protected int critMultiplier;
-    protected int sheild;
+    protected int shield;
     protected String name;
     protected int maxHealth;
     protected int curHealth;
@@ -31,6 +31,10 @@ public abstract class Entity {
         height = 200;
         curHealth = 100;
         maxHealth = curHealth;
+    }
+
+    public void newRound() {
+        curHealth = maxHealth;
     }
 
     public void endTurn() {

@@ -18,7 +18,7 @@ public class Game extends BasicGameState
 	private int id;
 	private CardManager cardManager;
 	private EntityManager entityManager;
-	private World world;
+	private static World world;
 	private GameUI ui;
 	private static Player player;
 	public Game(int id)
@@ -41,7 +41,7 @@ public class Game extends BasicGameState
 		cardManager = new CardManager(gc);
 		entityManager = new EntityManager();
 		player = new Player(entityManager);
-		world = new World(gc, cardManager, entityManager);
+		world = new World(sbg, gc, cardManager, entityManager);
 		ui = new GameUI(cardManager, entityManager);
  		Sounds.BGMUSIC1.loop(1F, .2F);
 	}

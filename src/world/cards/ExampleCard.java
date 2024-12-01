@@ -5,8 +5,8 @@ import world.entity.Entity;
 
 public class ExampleCard extends TargetedCard {
 
-    public ExampleCard(GameContainer gc){
-        super(gc);
+    public ExampleCard(){
+        super();
         cost = 1;
         rarity = 2;
     }
