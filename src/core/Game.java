@@ -3,6 +3,7 @@ package core;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import world.Player;
 import world.World;
 import world.cards.Card;
 import world.cards.ExampleCard;
@@ -19,7 +20,8 @@ public class Game extends BasicGameState
 	private EntityManager entityManager;
 	private World world;
 	private GameUI ui;
-	public Game(int id) 
+	private static Player player;
+	public Game(int id)
 	{
 		this.id = id;
 	}
@@ -34,12 +36,14 @@ public class Game extends BasicGameState
 		this.sbg = sbg;
 		gc.setShowFPS(true);
 		Images.loadImages();
+		Sounds.loadSounds();
 		Sounds.loadMusic();
 		cardManager = new CardManager(gc);
 		entityManager = new EntityManager();
+		player = new Player(entityManager);
 		world = new World(gc, cardManager, entityManager);
 		ui = new GameUI(cardManager, entityManager);
-		Sounds.BGMUSIC1.loop(1F, .4F);
+ 		Sounds.BGMUSIC1.loop(1F, .2F);
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException

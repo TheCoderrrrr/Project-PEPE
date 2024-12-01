@@ -13,6 +13,9 @@ public abstract class Entity {
     protected int y;
     protected int width;
     protected int height;
+    protected int critRate;
+    protected int critMultiplier;
+    protected int sheild;
     protected String name;
     protected int maxHealth;
     protected int curHealth;
@@ -91,5 +94,4 @@ public abstract class Entity {
     {
         return height;
     }
-
 }

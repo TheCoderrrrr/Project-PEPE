@@ -48,13 +48,13 @@ public class World {
     public void endEnemyTurn()
     {
         entityManager.endTurn();
-        turn++;
+        nextTurn();
     }
 
     public void nextTurn() {
         turn++;
         cardManager.resetHand();
-        entityManager.endTurn();
+        cardManager.resetEnergy();
     }
     public void mousePressed(int button, int x, int y) {
         if (playerTurn) {

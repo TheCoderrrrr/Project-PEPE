@@ -30,7 +30,7 @@ public abstract class Card {
     protected String cardType;
     protected GameContainer gc;
     protected Image image;
-
+    protected int energyCost;
     protected Effect effect;
 
     public Card(GameContainer gc) {
@@ -38,6 +38,7 @@ public abstract class Card {
         centerY = y + height / 2;
         this.gc = gc;
         selected = false;
+        energyCost = 2;
         image = Images.PLACEHOLDERCARD;
     }
     //only for single target cards
@@ -135,5 +136,9 @@ public abstract class Card {
     public int getY()
     {
         return y;
+    }
+    public int getEnergyCost()
+    {
+        return energyCost;
     }
 }

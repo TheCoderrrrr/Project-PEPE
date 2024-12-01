@@ -4,7 +4,7 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 
-public class Images {
+public class    Images {
 
     public static Image PLACEHOLDERCARD;
     public static Image BACKGROUND;

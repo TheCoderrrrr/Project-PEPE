@@ -34,6 +34,7 @@ public class GameUI {
         g.setColor(Color.red);
         g.drawRect(100, 100, 200, 200);
         renderHealthBars(g);
+        renderEnergy(g);
     }
     public void update()
     {
@@ -56,6 +57,10 @@ public class GameUI {
             selected = false;
             selectedCard = null;
         }
+    }
+    public void renderEnergy(Graphics g)
+    {
+        g.drawString("current energy / maximum energy : " + cardManager.getCurEnergy() + " / " + cardManager.getMaximumEnergy(), 100, 150);
     }
     public void renderHealthBars(Graphics g){
         for(Entity e : entityManager.getEntities())
@@ -100,7 +105,7 @@ public class GameUI {
     {
         for(Zone z: zones)
         {
-            if(z.isOver(x, y))
+            if(z.isOver(x, y) && cardManager.enoughEnergy(c))
             {
                 if(z.getEntity() != null)
                 {
