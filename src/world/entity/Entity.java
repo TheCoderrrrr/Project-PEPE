@@ -2,6 +2,7 @@ package world.entity;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import world.Player;
 import world.effects.Effect;
 import world.effects.buff.Shield;
@@ -21,6 +22,7 @@ public abstract class Entity {
     protected int maxHealth;
     protected int curHealth;
     protected int position;
+    protected Image image;
     protected EntityManager entityManager;
     protected ArrayList<Effect> activeEffects;
 
@@ -101,7 +103,7 @@ public abstract class Entity {
 
     public void render(Graphics g) {
         g.setColor(Color.white);
-        g.fillRect(x, y, width, height);
+        g.drawImage(image,x , y);
         g.setColor(Color.blue);
         g.drawString(""+ curHealth, x, y);
     }

@@ -37,6 +37,9 @@ public class Images {
     public static Image MAUL;
     public static Image CONCEALED_CLAWS;
     public static Image BUTTON_BARRAGE;
+    public static Image BEAR_HERO;
+    public static Image ENEMY1;
+    public static Image ENEMY2;
     public static void loadImages()
     {
         try
@@ -72,9 +75,10 @@ public class Images {
             CONCEALED_CLAWS = BEAR_MOVES.getSubImage(23, 0);
             BUTTON_BARRAGE = BEAR_MOVES.getSubImage(24, 0);
 
+            BEAR_HERO = new Image("res/images/entity/hero/Toy_Bear.png");
 
-
-
+            ENEMY1 = new Image("res/images/entity/enemy/Green_Army_Soldier.png");
+            ENEMY2 = new Image("res/images/entity/enemy/Rolling_Horse.png");
 
         }
         catch (SlickException e)

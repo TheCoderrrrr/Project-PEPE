@@ -1,5 +1,6 @@
 package world.entity;
 
+import core.Images;
 import world.Player;
 import world.effects.Effect;
 import world.effects.buff.Shield;
@@ -17,6 +18,12 @@ public class EnemyUnit extends Entity{
     private MoveSet moveSet;
     public EnemyUnit(int x, int y) {
         super(x, y);
+        if(Math.random() < 0.5)
+        {
+            image = Images.ENEMY1;
+        }else{
+            image = Images.ENEMY2;
+        }
         moveSet = new MoveSet();
         moveSet.addMove(new BasicAttack());
         moveSet.addMove(new BABA());

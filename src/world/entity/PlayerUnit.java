@@ -1,5 +1,6 @@
 package world.entity;
 
+import core.Images;
 import world.effects.Effect;
 import world.effects.buff.Shield;
 import world.effects.debuff.Mark;
@@ -12,6 +13,7 @@ public class PlayerUnit extends Entity{
 
     public PlayerUnit(int x, int y) {
         super(x, y);
+        image = Images.BEAR_HERO;
     }
     public ArrayList<Effect> getEffects()
     {
