@@ -1,5 +1,6 @@
-package world.effects;
+package world.effects.debuff;
 
+import world.effects.Effect;
 import world.entity.Entity;
 
 public class Poison extends Effect {
@@ -8,6 +9,7 @@ public class Poison extends Effect {
     public Poison(Entity e, int intensity, int duration) {
         super(e, duration);
         this.intensity = intensity;
+        name = "Poisoned";
     }
 
     @Override

@@ -4,8 +4,10 @@ import core.Main;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import world.cards.Card;
+import world.effects.Effect;
 import world.entity.EnemyUnit;
 import world.entity.Entity;
+import world.entity.PlayerUnit;
 import world.managers.CardManager;
 import world.managers.EntityManager;
 
@@ -35,6 +37,7 @@ public class GameUI {
         g.drawRect(100, 100, 200, 200);
         renderHealthBars(g);
         renderEnergy(g);
+        renderEffects(g);
     }
     public void update()
     {
@@ -71,6 +74,19 @@ public class GameUI {
             g.fillRect((float) e.getX(), (float) (e.getY() + e.getHeight()), (float) e.getWidth() * e.getPercentHealthLeft(), (float) (Main.getScreenHeight() * 0.01));
         }
     }
+    public void renderEffects(Graphics g)
+    {
+        for(Entity e : entityManager.getEntities())
+        {
+            g.setColor(Color.black);
+            for(int i = 0; i < e.getActiveEffects().size(); i++)
+            {
+                Effect effect = e.getActiveEffects().get(i);
+                g.drawString("Effect: " + effect.getName() + " Turns Left: " + effect.getDuration(), (float) e.getX(), (float) (e.getY() + e.getHeight() + Main.getScreenHeight() * (0.02 + i * 0.01)));
+
+            }
+        }
+    }
     public void selectionScreen(Graphics g){
         if(!zones.isEmpty())
         {
@@ -82,17 +98,30 @@ public class GameUI {
     }
     public void setZones()
     {
-        if(selectedCard != null && selectedCard.getCardType().equals("MultiTarget") )
+        if(selectedCard != null)
         {
-            zones.add(new Zone(Main.getScreenWidth() /5, Main.getScreenHeight() /5, Main.getScreenWidth()/5 * 3, Main.getScreenHeight() /5 * 3));
-        }
-        else if(selectedCard != null && selectedCard.getCardType().equals("SingleTarget"))
-        {
-            for(Entity e : entityManager.getEntities())
+            if(selectedCard.getCardType().equals("MultiTarget") )
             {
-                if(e instanceof EnemyUnit)
+                zones.add(new Zone(Main.getScreenWidth() /5, Main.getScreenHeight() /5, Main.getScreenWidth()/5 * 3, Main.getScreenHeight() /5 * 3));
+            }
+            else if(selectedCard.getCardType().equals("SingleTarget"))
+            {
+                for(Entity e : entityManager.getEntities())
                 {
-                    zones.add(new Zone(e));
+                    if(e instanceof EnemyUnit)
+                    {
+                        zones.add(new Zone(e));
+                    }
+                }
+            }
+            else if(selectedCard.getCardType().equals("SelfTarget"))
+            {
+                for(Entity e : entityManager.getEntities())
+                {
+                    if(e instanceof PlayerUnit)
+                    {
+                        zones.add(new Zone(e));
+                    }
                 }
             }
         }

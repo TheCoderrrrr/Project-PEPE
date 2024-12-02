@@ -1,7 +1,7 @@
 package world.cards;
 
-import org.newdawn.slick.GameContainer;
-import world.effects.Poison;
+import world.cards.single.TargetedCard;
+import world.effects.debuff.Poison;
 import world.entity.Entity;
 
 public class ExampleDebuffCard extends TargetedCard implements StatusEffect{

@@ -1,6 +1,7 @@
-package world.cards;
+package world.cards.multi;
 
 import org.newdawn.slick.GameContainer;
+import world.cards.Card;
 
 abstract public class GlobalCard extends Card {
     public GlobalCard() {

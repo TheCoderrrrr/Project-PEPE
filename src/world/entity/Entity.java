@@ -2,8 +2,10 @@ package world.entity;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
+import world.Player;
 import world.effects.Effect;
-import world.effects.Mark;
+import world.effects.buff.Shield;
+import world.effects.debuff.Mark;
 import world.managers.EntityManager;
 
 import java.util.ArrayList;
@@ -15,7 +17,6 @@ public abstract class Entity {
     protected int height;
     protected int critRate;
     protected int critMultiplier;
-    protected int shield;
     protected String name;
     protected int maxHealth;
     protected int curHealth;
@@ -48,6 +49,10 @@ public abstract class Entity {
             }
         }
     }
+    public ArrayList<Effect> getActiveEffects()
+    {
+        return activeEffects;
+    }
 
     public int getX() {
         return x;
@@ -72,15 +77,10 @@ public abstract class Entity {
     public int getCurHealth() {
         return curHealth;
     }
-    public void takeDamage(int damage)
+    public abstract void takeDamage(int damage);
+    public void heal(float amount)
     {
-        float multiplier = 1;
-        for(Effect e : activeEffects) {
-            if(e instanceof Mark) {
-                multiplier += ((Mark) e).getMultiplier();
-            }
-        }
-        curHealth = Math.max(0, curHealth - Math.round(damage * multiplier));
+        curHealth = (int) Math.min(maxHealth, curHealth + amount);
     }
     public void addEffect(Effect e) {activeEffects.add(e);}
 

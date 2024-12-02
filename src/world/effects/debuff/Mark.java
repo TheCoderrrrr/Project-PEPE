@@ -1,5 +1,6 @@
-package world.effects;
+package world.effects.debuff;
 
+import world.effects.Effect;
 import world.entity.Entity;
 
 public class Mark extends Effect {
@@ -8,6 +9,7 @@ public class Mark extends Effect {
     public Mark(Entity e, float multiplier, int duration) {
         super(e, duration);
         this.multiplier = multiplier;
+        name = "Marked";
     }
 
     public float getMultiplier() {

@@ -40,7 +40,7 @@ public class Game extends BasicGameState
 		Sounds.loadMusic();
 		cardManager = new CardManager(gc);
 		entityManager = new EntityManager();
-		player = new Player(entityManager);
+		player = new Player((PlayerUnit) entityManager.getEntities().getFirst());
 		world = new World(sbg, gc, cardManager, entityManager);
 		ui = new GameUI(cardManager, entityManager);
  		Sounds.BGMUSIC1.loop(1F, .2F);

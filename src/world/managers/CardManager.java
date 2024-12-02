@@ -7,6 +7,11 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import world.World;
 import world.cards.*;
+import world.cards.self.BearsYearningCard;
+import world.cards.self.ExtraStuffingCard;
+import world.cards.self.PrimalRageCard;
+import world.cards.self.SewingCard;
+import world.cards.single.MaulCard;
 import world.entity.Entity;
 
 import java.util.ArrayList;
@@ -34,12 +39,16 @@ public class CardManager {
         totalEnergy = 4;
         maximumEnergy = totalEnergy;
 
-        //populate deck
+        //populate deck with starter cards
         for (int i = 0; i < 5; i++) {
-            if (Math.random() < 0.5) {
-                deck.add(new ExampleCard2());
-            } else {
-                deck.add(new ExampleDebuffCard());
+            double num = Math.random();
+            if (num < 0.33) {
+                deck.add(new MaulCard());
+            } else if(num > 0.33 && num < 0.66){
+                deck.add(new PrimalRageCard());
+            }
+            else {
+                deck.add(new ExtraStuffingCard());
             }
         }
 
@@ -160,7 +169,6 @@ public class CardManager {
     }
 
     public static void useCard(Card c, ArrayList<Entity> entities) {
-
         c.action(entities);
         if (c instanceof StatusEffect) {
             for (Entity e : entities)

@@ -39,6 +39,8 @@ public class World {
     public void update(int delta) {
         CardManager.update();
         entityManager.update();
+        Player.updateEffects(entityManager.getEntities().getFirst().getActiveEffects());
+        Player.updateStats();
         if(!playerTurn)
         {
             entityManager.enemyTurn();

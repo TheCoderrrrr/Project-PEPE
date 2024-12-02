@@ -1,13 +1,13 @@
 package world.cards;
 
 import core.Images;
-import org.newdawn.slick.GameContainer;
+import world.cards.multi.GlobalCard;
 import world.entity.EnemyUnit;
 import world.entity.Entity;
 
 import java.util.ArrayList;
 
-public class ExampleCard2 extends GlobalCard{
+public class ExampleCard2 extends GlobalCard {
 
     public ExampleCard2(){
         super();

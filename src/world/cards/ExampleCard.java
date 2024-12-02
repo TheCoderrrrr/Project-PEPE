@@ -1,6 +1,6 @@
 package world.cards;
 
-import org.newdawn.slick.GameContainer;
+import world.cards.single.TargetedCard;
 import world.entity.Entity;
 
 public class ExampleCard extends TargetedCard {

@@ -2,6 +2,7 @@ package world.managers;
 
 import core.Main;
 import org.newdawn.slick.Graphics;
+import world.Player;
 import world.World;
 import world.entity.EnemyUnit;
 import world.entity.Entity;
@@ -33,6 +34,7 @@ public class EntityManager {
         }
     }
     public void update(){
+
         for(int i = 0; i < entities.size(); i++)
         {
             if(entities.get(i) instanceof EnemyUnit)

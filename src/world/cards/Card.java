@@ -59,6 +59,7 @@ public abstract class Card {
     public void render(Graphics g) {
         if (!selected) {
             g.drawImage(image, x, y);
+            g.setColor(Color.black);
             g.drawString(getClass().getSimpleName(), x, y);
         } else {
             g.drawImage(image, gc.getInput().getMouseX() - translationalX, gc.getInput().getMouseY() - translationalY);

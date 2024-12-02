@@ -1,7 +1,7 @@
 package world.cards;
 
-import org.newdawn.slick.GameContainer;
-import world.effects.Mark;
+import world.cards.single.TargetedCard;
+import world.effects.debuff.Mark;
 import world.entity.Entity;
 
 public class ExampleBuffCard extends TargetedCard implements StatusEffect{

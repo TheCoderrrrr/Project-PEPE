@@ -1,12 +1,14 @@
 package world.managers;
 
-import core.CardSelection;
 import core.Main;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.state.StateBasedGame;
 import world.cards.*;
+import world.cards.self.ExtraStuffingCard;
+import world.cards.self.SewingCard;
+import world.cards.single.MaulCard;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +23,9 @@ public class SelectionManager {
         SelectionManager.gc = gc;
         SelectionManager.sbg = sbg;
         cards = new ArrayList<>();
-        cards.add(ExampleBuffCard.class);
-        cards.add(ExampleCard.class);
-        cards.add(ExampleCard2.class);
-        cards.add(ExampleDebuffCard.class);
+        cards.add(SewingCard.class);
+        cards.add(MaulCard.class);
+        cards.add(ExtraStuffingCard.class);
     }
 
     //call this method when all enemies have been defeated
