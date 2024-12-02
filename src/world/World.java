@@ -33,8 +33,9 @@ public class World {
 
     public void render(Graphics g) {
         g.drawString(" " + turn, 100, 100);
-        CardManager.render(g);
         entityManager.render(g);
+        CardManager.render(g);
+
     }
 
     public void update(int delta) {

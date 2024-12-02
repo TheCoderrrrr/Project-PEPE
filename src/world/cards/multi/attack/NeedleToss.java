@@ -13,6 +13,7 @@ public class NeedleToss extends GlobalCard {
         super();
         energyCost = 2;
         name = "Needle Toss";
+        description = "20 dmg to all enemies";
         image = Images.NEEDLE_TOSS;
     }
 

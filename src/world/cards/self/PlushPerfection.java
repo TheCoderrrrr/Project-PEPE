@@ -12,6 +12,7 @@ public class PlushPerfection extends SelfTargeted implements StatusEffect {
         image = Images.PLUSH_PERFECTION;
         energyCost = 2;
         name = "Plush Perfection";
+        description = "Heal 30 HP";
     }
     @Override
     public void applyEffect(Entity e) {

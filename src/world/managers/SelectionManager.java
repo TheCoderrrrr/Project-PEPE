@@ -75,12 +75,16 @@ public class SelectionManager {
 
     public static void render(Graphics g) {
         g.setColor(Color.white);
-        g.drawString("SELECT A CARD", (float) Main.getScreenWidth()/2, (float) Main.getScreenHeight()/2);
+        g.drawString("SELECT A CARD", (float) Main.getScreenWidth()/2, (float) Main.getScreenHeight()/8 * 5);
         g.drawRect((float) Main.getScreenWidth() /2 - 25, (float) (Main.getScreenHeight() * 3) /4 - 25, 50, 50);
         g.drawString("Continue", (float) Main.getScreenWidth() /2, (float) (Main.getScreenHeight() * 3) /4);
-        for(Card c : cardSelection) {
+        for(int i = 0; i < cardSelection.size(); i++)
+        {
+            Card c = cardSelection.get(i);
+            c.moveCard(Main.getScreenWidth() / 4 * (i + 1), Main.getScreenHeight() /4);
             c.render(g);
         }
+
     }
 
     public static void mousePressed(int button, int x, int y) {

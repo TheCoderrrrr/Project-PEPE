@@ -12,6 +12,7 @@ public class Sewing extends SelfTargeted implements StatusEffect {
         image = Images.SEWING;
         energyCost = 3;
         name = "Sewing";
+        description = "Heal 50 HP";
     }
     @Override
     public void applyEffect(Entity e) {

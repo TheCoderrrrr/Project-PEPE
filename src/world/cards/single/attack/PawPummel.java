@@ -11,6 +11,7 @@ public class PawPummel extends TargetedCard {
         energyCost = 1;
         name = "Paw Pummel";
         image = Images.PAW_PUMMEL;
+        description = "25 dmg to selected target";
     }
     public void action(Entity e) {
         e.takeDamage(25);

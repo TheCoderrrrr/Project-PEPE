@@ -11,6 +11,7 @@ public class Smash extends TargetedCard {
         energyCost = 1;
         name = "Smash";
         image = Images.SMASH;
+        description = "25 dmg to selected target";
     }
     public void action(Entity e) {
         e.takeDamage(25);

@@ -10,6 +10,7 @@ public class BearsYearning extends SelfTargeted implements StatusEffect {
         super();
         energyCost = 3;
         name = "Bear's Yearning";
+        description = "Completely block next attack";
         image = Images.BEARS_YEARNING;
     }
     @Override

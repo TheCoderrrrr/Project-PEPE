@@ -13,6 +13,7 @@ public class CuddleCrush extends TargetedCard implements StatusEffect {
         energyCost = 1;
         name = "Cuddle Crush";
         image = Images.CUDDLE_CRUSH;
+        description = "Applies Mark Effect";
     }
 
     @Override

@@ -10,7 +10,6 @@ import org.newdawn.slick.Image;
 import world.effects.Effect;
 import world.entity.Entity;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 public abstract class Card {
@@ -36,6 +35,7 @@ public abstract class Card {
     protected Effect effect;
     protected boolean outlined;
     protected String name;
+    protected String description;
 
     public Card() {
         centerX = x + width / 2;
@@ -61,19 +61,23 @@ public abstract class Card {
         if (!selected) {
             g.drawImage(image, x, y);
             g.setColor(Color.black);
-            g.drawString(getName(), x, y);
+            g.drawString(getName(), (float) (x + width * 0.05), (float) (y + height * 0.02));
+            renderDescrption(g, x, y);
+
         } else {
             g.drawImage(image, gc.getInput().getMouseX() - translationalX, gc.getInput().getMouseY() - translationalY);
             g.setColor(Color.black);
-            g.drawString(getName(),gc.getInput().getMouseX() - translationalX, gc.getInput().getMouseY() - translationalY);
+            g.drawString(getName(), (float) (gc.getInput().getMouseX() - translationalX + (width * 0.05)), (float) (gc.getInput().getMouseY() - translationalY + height * 0.02));
+            renderDescrption(g, gc.getInput().getMouseX() - translationalX, gc.getInput().getMouseY() - translationalY);
         }
         g.setColor(Color.white);
         if(outlined) {
             g.drawRect(x - 5, y - 5, width + 10, height + 10);
         }
-    }
-    public void renderDescrption(Graphics g){
 
+    }
+    public void renderDescrption(Graphics g, int x , int y){
+        g.drawString("Energy Cost: " + energyCost + "\n" + description, (float) (x + width * 0.05), (float) (y + height * 0.7));
     }
     public String getName()
     {

@@ -15,13 +15,13 @@ public class EntityManager {
     public EntityManager()
     {
         entities = new ArrayList<>();
-        entities.add(new PlayerUnit(Main.getScreenWidth()/4, Main.getScreenHeight()/2));
+        entities.add(new PlayerUnit((int) (Main.getScreenWidth() * 0.15), (int) (Main.getScreenHeight() * 0.6)));
         newRound();
     }
 
     public void newRound() {
-        entities.add(new EnemyUnit(Main.getScreenWidth()*3/4, Main.getScreenHeight()/3));
-        entities.add(new EnemyUnit(Main.getScreenWidth()*3/4, Main.getScreenHeight()*2/3));
+        entities.add(new EnemyUnit((int) (Main.getScreenWidth() * 0.65), (int) (Main.getScreenHeight() * 0.6)));
+        entities.add(new EnemyUnit((int) (Main.getScreenWidth()* 0.78), (int) (Main.getScreenHeight() * 0.6)));
     }
 
     public boolean enemiesKilled() {

@@ -12,6 +12,7 @@ public class ComfortCurse extends GlobalCard implements StatusEffect {
         super();
         energyCost = 2;
         name = "Comfort Curse";
+        description = "Adds Vulnerability";
         image = Images.COMFORT_CURSE;
     }
     @Override

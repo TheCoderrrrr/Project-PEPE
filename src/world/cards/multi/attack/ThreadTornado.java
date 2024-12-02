@@ -13,6 +13,7 @@ public class ThreadTornado extends GlobalCard {
         super();
         energyCost = 1;
         name = "Thread Tornado";
+        description = "25 dmg to all enemies";
         image = Images.THREAD_TORNADO;
     }
 

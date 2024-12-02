@@ -20,10 +20,10 @@ public class Zone {
     public Zone(Entity entity)
     {
         this.entity = entity;
-        x = entity.getX() - 100;
-        y = entity.getY() - 100;
-        width = 200;
-        height = 300;
+        x = (int) (entity.getX() - entity.getWidth() * 0.25);
+        y = (int) (entity.getY() - entity.getHeight() * 0.25);
+        width = (int) (entity.getWidth() + entity.getWidth() * 0.5);
+        height = (int) (entity.getHeight() + entity.getHeight() * 0.5);
 
     }
     public void render(Graphics g)

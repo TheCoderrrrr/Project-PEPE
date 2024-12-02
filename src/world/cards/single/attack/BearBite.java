@@ -13,6 +13,7 @@ public class BearBite extends TargetedCard {
         energyCost = 1;
         name = "Bear Bite";
         image = Images.BEAR_BITE;
+        description = "25 dmg to selected target";
     }
     public void action(Entity e) {
         e.takeDamage(25);

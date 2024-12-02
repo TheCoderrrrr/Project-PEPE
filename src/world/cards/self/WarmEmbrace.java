@@ -13,6 +13,7 @@ public class WarmEmbrace extends SelfTargeted implements StatusEffect {
         image = Images.WARM_EMBRACE;
         energyCost = 1;
         name = "Warm Embrace";
+        description = "Heal 15 HP for the next 2 rounds";
     }
     @Override
     public void applyEffect(Entity e) {

@@ -13,6 +13,7 @@ public class CupidsArrow extends TargetedCard implements StatusEffect {
         energyCost = 3;
         name = "Cupid's Arrow";
         image = Images.CUPIDS_ARROW;
+        description = "Decrease Enemy Attack by 10%";
     }
 
     @Override

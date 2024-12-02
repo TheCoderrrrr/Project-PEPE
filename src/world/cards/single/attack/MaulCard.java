@@ -10,6 +10,7 @@ public class MaulCard extends TargetedCard {
         energyCost = 2;
         name = "Maul";
         image = Images.MAUL;
+        description = "30 dmg to selected target";
     }
     public void action(Entity e)
     {

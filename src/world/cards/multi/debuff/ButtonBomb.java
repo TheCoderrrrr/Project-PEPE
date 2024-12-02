@@ -13,6 +13,7 @@ public class ButtonBomb extends GlobalCard implements StatusEffect {
         super();
         energyCost = 2;
         name = "Button Bomb";
+        description = "Adds Mark Effect";
         image = Images.BUTTON_BOMB;
     }
 

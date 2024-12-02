@@ -12,6 +12,7 @@ public class StuffedSorrow extends GlobalCard implements StatusEffect {
         super();
         energyCost = 3;
         name = "Stuffed Sorrow";
+        description = "Decrease Enemy Attack by 20% for 1 round";
         image = Images.STUFFED_SORROW;
     }
 

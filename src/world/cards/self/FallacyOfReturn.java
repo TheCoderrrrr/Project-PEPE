@@ -11,6 +11,7 @@ public class FallacyOfReturn extends SelfTargeted implements StatusEffect {
         image = Images.FALLACY_RETURN;
         energyCost = 0;
         name = "Fallacy of Return";
+        description = "Increase dmg by 20 for 3 rounds";
     }
 
     @Override
