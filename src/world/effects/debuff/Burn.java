@@ -4,7 +4,7 @@ import world.effects.Effect;
 import world.entity.Entity;
 
 public class Burn extends Effect {
-    private static final int BURN_DAMAGE = 3;
+    private static final int BURN_DAMAGE = 5;
     public Burn(Entity e, int duration) {
         super(e, duration);
         name = "Burning";

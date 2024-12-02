@@ -34,7 +34,6 @@ public class GameUI {
             selectionScreen(g);
         }
         g.setColor(Color.red);
-        g.drawRect(100, 100, 200, 200);
         renderHealthBars(g);
         renderEnergy(g);
         renderEffects(g);
@@ -63,12 +62,13 @@ public class GameUI {
     }
     public void renderEnergy(Graphics g)
     {
-        g.drawString("current energy / maximum energy : " + cardManager.getCurEnergy() + " / " + cardManager.getMaximumEnergy(), 100, 150);
+        g.setColor(Color.blue);
+        g.drawString("current energy / maximum energy : " + cardManager.getCurEnergy() + " / " + cardManager.getMaximumEnergy(), (float) (Main.getScreenWidth() * 0.05), (float) (Main.getScreenHeight() * 0.9));
     }
     public void renderHealthBars(Graphics g){
         for(Entity e : entityManager.getEntities())
         {
-            g.setColor(Color.white);
+            g.setColor(Color.black);
             g.fillRect((float) e.getX(), (float) (e.getY() + e.getHeight()), (float) e.getWidth(), (float) (Main.getScreenHeight() * 0.01));
             g.setColor(Color.red);
             g.fillRect((float) e.getX(), (float) (e.getY() + e.getHeight()), (float) e.getWidth() * e.getPercentHealthLeft(), (float) (Main.getScreenHeight() * 0.01));

@@ -3,10 +3,6 @@ package core;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
-import world.World;
-import world.cards.Card;
-import world.cards.ExampleCard;
-import world.managers.CardManager;
 
 public class Menu extends BasicGameState
 {

@@ -35,6 +35,7 @@ public abstract class Card {
     protected int energyCost;
     protected Effect effect;
     protected boolean outlined;
+    protected String name;
 
     public Card() {
         centerX = x + width / 2;
@@ -60,14 +61,23 @@ public abstract class Card {
         if (!selected) {
             g.drawImage(image, x, y);
             g.setColor(Color.black);
-            g.drawString(getClass().getSimpleName(), x, y);
+            g.drawString(getName(), x, y);
         } else {
             g.drawImage(image, gc.getInput().getMouseX() - translationalX, gc.getInput().getMouseY() - translationalY);
+            g.setColor(Color.black);
+            g.drawString(getName(),gc.getInput().getMouseX() - translationalX, gc.getInput().getMouseY() - translationalY);
         }
         g.setColor(Color.white);
         if(outlined) {
             g.drawRect(x - 5, y - 5, width + 10, height + 10);
         }
+    }
+    public void renderDescrption(Graphics g){
+
+    }
+    public String getName()
+    {
+        return name;
     }
 
     public static int getWidth() {
@@ -137,7 +147,7 @@ public abstract class Card {
     }
 
     public boolean isOver(int mX, int mY) {
-        return x <= mX && x + width > mX && y <= mY && y + height > mY;
+        return x <= mX && x + width > mX && y <= mY && y + height >= mY;
     }
 
     public void setRotation(float degree) {

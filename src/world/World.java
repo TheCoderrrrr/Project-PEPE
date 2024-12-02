@@ -1,5 +1,6 @@
 package world;
 
+import core.Game;
 import core.Main;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -56,7 +57,10 @@ public class World {
                 sbg.enterState(Main.CARD_SELECTION_ID);
                 CardManager.resetHand();
             }
-
+        }
+        if(entityManager.getEntities().getFirst().getCurHealth() <= 0)
+        {
+            Game.lose();
         }
     }
     public void endPlayerTurn()

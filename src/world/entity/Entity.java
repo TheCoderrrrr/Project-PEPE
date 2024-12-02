@@ -80,9 +80,24 @@ public abstract class Entity {
     public abstract void takeDamage(int damage);
     public void heal(float amount)
     {
-        curHealth = (int) Math.min(maxHealth, curHealth + amount);
+        System.out.println(amount);
+        curHealth += (int) amount;
     }
-    public void addEffect(Effect e) {activeEffects.add(e);}
+    public void addEffect(Effect e) {
+        boolean hasEffect = false;
+        for(Effect usedEffect : activeEffects)
+        {
+            if(usedEffect.getName().equals(e.getName()))
+            {
+                hasEffect = true;
+                usedEffect.resetDuration();
+            }
+        }
+        if(!hasEffect)
+        {
+            activeEffects.add(e);
+        }
+    }
 
     public void render(Graphics g) {
         g.setColor(Color.white);

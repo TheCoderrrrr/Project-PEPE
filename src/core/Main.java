@@ -15,11 +15,13 @@ public class Main extends StateBasedGame
     public static final int GAME_ID = 1;
 	public static final int PAUSE_ID = 2;
 	public static final int CARD_SELECTION_ID = 3;
+	public static final int LOSE_ID = 4;
 
 	private BasicGameState menu;
     private BasicGameState game;
 	private BasicGameState pause;
 	private BasicGameState cardSelection;
+	private BasicGameState lose;
     
 	public Main(String name) 
 	{
@@ -29,6 +31,8 @@ public class Main extends StateBasedGame
 		game = new Game(GAME_ID);
 		pause = new Pause(PAUSE_ID);
 		cardSelection = new CardSelection(CARD_SELECTION_ID);
+		lose = new Lose(LOSE_ID);
+
 
 	}
 
@@ -49,6 +53,7 @@ public class Main extends StateBasedGame
 		addState(game);
 		addState(pause);
 		addState(cardSelection);
+		addState(lose);
 	}
 
 	public static void main(String[] args) 

@@ -6,10 +6,12 @@ abstract public class Effect {
     protected Entity target;
     protected int duration;
     protected String name;
+    protected int maxDuration;
 
     public Effect(Entity e, int duration) {;
         target = e;
         this.duration = duration;
+        maxDuration = duration;
     }
 
     public void action() {
@@ -26,5 +28,9 @@ abstract public class Effect {
     public String getName()
     {
         return name;
+    }
+    public void resetDuration()
+    {
+        duration = maxDuration;
     }
 }

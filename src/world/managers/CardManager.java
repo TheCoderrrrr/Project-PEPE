@@ -1,21 +1,22 @@
 package world.managers;
 
-import core.Game;
 import core.Main;
 import core.Sounds;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import world.World;
 import world.cards.*;
-import world.cards.self.BearsYearningCard;
-import world.cards.self.ExtraStuffingCard;
-import world.cards.self.PrimalRageCard;
-import world.cards.self.SewingCard;
-import world.cards.single.MaulCard;
+import world.cards.multi.attack.NeedleToss;
+import world.cards.self.ExtraStuffing;
+import world.cards.self.FallacyOfReturn;
+import world.cards.self.PrimalRage;
+import world.cards.self.WarmEmbrace;
+import world.cards.single.attack.BearHug;
+import world.cards.single.attack.MaulCard;
+import world.cards.single.attack.Slam;
 import world.entity.Entity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class CardManager {
     private static final int HAND_SIZE = 5;
@@ -40,18 +41,12 @@ public class CardManager {
         maximumEnergy = totalEnergy;
 
         //populate deck with starter cards
-        for (int i = 0; i < 5; i++) {
-            double num = Math.random();
-            if (num < 0.33) {
-                deck.add(new MaulCard());
-            } else if(num > 0.33 && num < 0.66){
-                deck.add(new PrimalRageCard());
-            }
-            else {
-                deck.add(new ExtraStuffingCard());
-            }
-        }
-
+        deck.add(new MaulCard());
+        deck.add(new BearHug());
+        deck.add(new Slam());
+        deck.add(new WarmEmbrace());
+        deck.add(new FallacyOfReturn());
+        deck.add(new ExtraStuffing());
         //populate hand
         resetHand();
     }
@@ -82,8 +77,8 @@ public class CardManager {
         updateTotalCardWidth();
         updateCardPositions();
     }
-    public static void resetEnergy()
-    {
+
+    public static void resetEnergy() {
         totalEnergy = maximumEnergy;
     }
 

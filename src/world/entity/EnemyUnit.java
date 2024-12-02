@@ -5,6 +5,7 @@ import world.effects.Effect;
 import world.effects.buff.Shield;
 import world.effects.debuff.Mark;
 import world.effects.debuff.Vulnerable;
+import world.effects.debuff.Weaken;
 import world.enemyMoveset.BABA;
 import world.enemyMoveset.BasicAttack;
 import world.enemyMoveset.MoveSet;
@@ -22,7 +23,15 @@ public class EnemyUnit extends Entity{
     }
     public void action(Entity e)
     {
-        e.takeDamage(10);
+        float damageMultiplier = 1;
+        for(Effect effect : activeEffects)
+        {
+            if(effect instanceof Weaken)
+            {
+                damageMultiplier -= ((Weaken) effect).getMultiplier();
+            }
+        }
+        e.takeDamage((int) (10 * damageMultiplier));
     }
     public void takeDamage(int damage)
     {

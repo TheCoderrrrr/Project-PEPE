@@ -3,10 +3,6 @@ package core;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
-import world.World;
-import world.cards.Card;
-import world.cards.ExampleCard;
-import world.managers.CardManager;
 
 public class Pause extends BasicGameState {
     StateBasedGame sbg;
@@ -29,6 +25,7 @@ public class Pause extends BasicGameState {
     }
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+        g.setColor(Color.white);
         g.drawString("PAUSED\nM to go to menu\nP to return to game", (float) Main.getScreenWidth() / 2, (float) Main.getScreenHeight() / 2);
     }
 

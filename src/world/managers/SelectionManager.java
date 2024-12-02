@@ -6,9 +6,18 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.state.StateBasedGame;
 import world.cards.*;
-import world.cards.self.ExtraStuffingCard;
-import world.cards.self.SewingCard;
-import world.cards.single.MaulCard;
+import world.cards.multi.attack.ButtonBarrage;
+import world.cards.multi.attack.NeedleToss;
+import world.cards.multi.attack.ThreadTornado;
+import world.cards.multi.debuff.ButtonBomb;
+import world.cards.multi.debuff.ComfortCurse;
+import world.cards.multi.debuff.StuffedSorrow;
+import world.cards.self.*;
+import world.cards.single.attack.*;
+import world.cards.single.debuff.CuddleCrush;
+import world.cards.single.debuff.CupidsArrow;
+import world.cards.single.debuff.MuffledRoar;
+import world.cards.single.debuff.StitchedSilence;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +32,28 @@ public class SelectionManager {
         SelectionManager.gc = gc;
         SelectionManager.sbg = sbg;
         cards = new ArrayList<>();
-        cards.add(SewingCard.class);
+        cards.add(NeedleToss.class);
+        cards.add(ThreadTornado.class);
+        cards.add(ButtonBomb.class);
+        cards.add(ComfortCurse.class);
+        cards.add(StuffedSorrow.class);
+        cards.add(BearsYearning.class);
+        cards.add(ExtraStuffing.class);
+        cards.add(FallacyOfReturn.class);
+        cards.add(PlushPerfection.class);
+        cards.add(PrimalRage.class);
+        cards.add(Sewing.class);
+        cards.add(WarmEmbrace.class);
+        cards.add(BearBite.class);
+        cards.add(BearHug.class);
         cards.add(MaulCard.class);
-        cards.add(ExtraStuffingCard.class);
+        cards.add(PawCrush.class);
+        cards.add(PawPummel.class);
+        cards.add(CuddleCrush.class);
+        cards.add(CupidsArrow.class);
+        cards.add(MuffledRoar.class);
+        cards.add(StitchedSilence.class);
+
     }
 
     //call this method when all enemies have been defeated

@@ -5,8 +5,6 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import world.Player;
 import world.World;
-import world.cards.Card;
-import world.cards.ExampleCard;
 import world.entity.PlayerUnit;
 import world.managers.CardManager;
 import world.managers.EntityManager;
@@ -21,6 +19,7 @@ public class Game extends BasicGameState
 	private static World world;
 	private GameUI ui;
 	private static Player player;
+	private static boolean lose;
 	public Game(int id)
 	{
 		this.id = id;
@@ -34,6 +33,7 @@ public class Game extends BasicGameState
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException 
 	{
 		this.sbg = sbg;
+		lose = false;
 		gc.setShowFPS(true);
 		Images.loadImages();
 		Sounds.loadSounds();
@@ -49,6 +49,9 @@ public class Game extends BasicGameState
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
 	{
 		world.update(delta);
+		if(lose){
+			sbg.enterState(Main.LOSE_ID);
+		}
 	}
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException 
@@ -94,7 +97,7 @@ public class Game extends BasicGameState
 		world.mouseReleased(button, x, y);
 		ui.mouseReleased(button, x, y);
 	}
-	
-
-
+	public static void lose(){
+		lose = true;
+	}
 }
