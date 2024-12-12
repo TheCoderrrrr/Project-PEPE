@@ -1,12 +1,10 @@
 package world.cards.single.debuff;
 
-import core.Images;
+import resources.Images;
 import world.cards.StatusEffect;
 import world.cards.single.TargetedCard;
 import world.effects.debuff.Weaken;
 import world.entity.Entity;
-
-import java.lang.annotation.Target;
 
 public class StitchedSilence extends TargetedCard implements StatusEffect {
     public StitchedSilence()

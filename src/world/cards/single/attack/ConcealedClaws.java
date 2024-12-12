@@ -1,7 +1,7 @@
 package world.cards.single.attack;
 
 import world.cards.single.TargetedCard;
-import core.Images;
+import resources.Images;
 
 public class ConcealedClaws extends TargetedCard {
     public ConcealedClaws()

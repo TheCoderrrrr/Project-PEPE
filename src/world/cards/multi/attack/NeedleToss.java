@@ -1,6 +1,6 @@
 package world.cards.multi.attack;
 
-import core.Images;
+import resources.Images;
 import world.cards.multi.GlobalCard;
 import world.entity.EnemyUnit;
 import world.entity.Entity;

@@ -1,6 +1,6 @@
 package world.entity;
 
-import core.Images;
+import resources.Images;
 import world.Player;
 import world.effects.Effect;
 import world.effects.buff.Shield;
@@ -10,9 +10,6 @@ import world.effects.debuff.Weaken;
 import world.enemyMoveset.BABA;
 import world.enemyMoveset.BasicAttack;
 import world.enemyMoveset.MoveSet;
-import world.managers.EntityManager;
-
-import java.util.ArrayList;
 
 public class EnemyUnit extends Entity{
     private MoveSet moveSet;

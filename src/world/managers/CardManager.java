@@ -1,15 +1,13 @@
 package world.managers;
 
 import core.Main;
-import core.Sounds;
+import resources.Sounds;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import world.World;
 import world.cards.*;
-import world.cards.multi.attack.NeedleToss;
 import world.cards.self.ExtraStuffing;
 import world.cards.self.FallacyOfReturn;
-import world.cards.self.PrimalRage;
 import world.cards.self.WarmEmbrace;
 import world.cards.single.attack.BearHug;
 import world.cards.single.attack.MaulCard;

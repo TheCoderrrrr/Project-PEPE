@@ -1,4 +1,4 @@
-package core;
+package resources;
 
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;

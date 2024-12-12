@@ -1,7 +1,6 @@
 package world.cards.multi.debuff;
 
-import core.Images;
-import world.cards.Card;
+import resources.Images;
 import world.cards.StatusEffect;
 import world.cards.multi.GlobalCard;
 import world.effects.debuff.Mark;

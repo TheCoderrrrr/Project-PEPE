@@ -1,6 +1,6 @@
 package world.entity;
 
-import core.Images;
+import resources.Images;
 import world.effects.Effect;
 import world.effects.buff.Shield;
 import world.effects.debuff.Mark;

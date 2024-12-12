@@ -1,6 +1,6 @@
 package world.cards;
 
-import core.Images;
+import resources.Images;
 import core.Main;
 import org.lwjgl.util.vector.Vector2f;
 import org.newdawn.slick.Color;

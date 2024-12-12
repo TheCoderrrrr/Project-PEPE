@@ -1,10 +1,8 @@
 package world.cards.single.attack;
 
-import core.Images;
+import resources.Images;
 import world.cards.single.TargetedCard;
 import world.entity.Entity;
-
-import java.lang.annotation.Target;
 
 public class BearBite extends TargetedCard {
     public BearBite()

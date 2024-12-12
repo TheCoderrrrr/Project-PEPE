@@ -1,6 +1,6 @@
 package world.cards.single.attack;
 
-import core.Images;
+import resources.Images;
 import world.cards.StatusEffect;
 import world.cards.single.TargetedCard;
 import world.effects.debuff.Vulnerable;

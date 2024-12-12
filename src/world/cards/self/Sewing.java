@@ -1,6 +1,6 @@
 package world.cards.self;
 
-import core.Images;
+import resources.Images;
 import world.cards.StatusEffect;
 import world.effects.buff.Healing;
 import world.entity.Entity;

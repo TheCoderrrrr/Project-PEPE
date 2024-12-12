@@ -3,6 +3,9 @@ package core;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import resources.Fonts;
+import resources.Images;
+import resources.Sounds;
 import world.Player;
 import world.World;
 import world.entity.PlayerUnit;
@@ -38,6 +41,7 @@ public class Game extends BasicGameState
 		Images.loadImages();
 		Sounds.loadSounds();
 		Sounds.loadMusic();
+		Fonts.loadFonts();
 		cardManager = new CardManager(gc);
 		entityManager = new EntityManager();
 		player = new Player((PlayerUnit) entityManager.getEntities().getFirst());

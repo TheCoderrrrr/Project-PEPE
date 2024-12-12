@@ -1,12 +1,10 @@
 package world.cards.single.debuff;
 
-import core.Images;
+import resources.Images;
 import world.cards.StatusEffect;
 import world.cards.single.TargetedCard;
 import world.effects.debuff.Vulnerable;
 import world.entity.Entity;
-
-import java.lang.annotation.Target;
 
 public class MuffledRoar extends TargetedCard implements StatusEffect {
     public MuffledRoar()
