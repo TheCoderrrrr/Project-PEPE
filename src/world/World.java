@@ -39,7 +39,7 @@ public class World {
     }
 
     public void update(int delta) {
-        CardManager.update();
+        CardManager.update(delta);
         entityManager.update();
         Player.updateEffects(entityManager.getEntities().getFirst().getActiveEffects());
         Player.updateStats();

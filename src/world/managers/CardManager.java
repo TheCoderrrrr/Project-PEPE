@@ -50,7 +50,7 @@ public class CardManager {
     }
 
 
-    public static void update() {
+    public static void update(int delta) {
         overCard();
     }
 

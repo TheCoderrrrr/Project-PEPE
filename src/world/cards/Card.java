@@ -1,5 +1,6 @@
 package world.cards;
 
+import resources.Fonts;
 import resources.Images;
 import core.Main;
 import org.lwjgl.util.vector.Vector2f;
@@ -19,6 +20,8 @@ public abstract class Card {
     protected final static int height = 300;
     protected int x;
     protected int y;
+    protected int dx;
+    protected int dy;
     protected int originalX;
     protected int originalY;
     protected int centerX;
@@ -62,13 +65,12 @@ public abstract class Card {
             g.drawImage(image, x, y);
             g.setColor(Color.black);
             g.drawString(getName(), (float) (x + width * 0.05), (float) (y + height * 0.02));
-            renderDescrption(g, x, y);
-
+            Fonts.RETROGAMING.wrap(g, description, (float) (x + width * 0.05), (float) (y + height * 0.7), 18, 15);
         } else {
             g.drawImage(image, gc.getInput().getMouseX() - translationalX, gc.getInput().getMouseY() - translationalY);
             g.setColor(Color.black);
             g.drawString(getName(), (float) (gc.getInput().getMouseX() - translationalX + (width * 0.05)), (float) (gc.getInput().getMouseY() - translationalY + height * 0.02));
-            renderDescrption(g, gc.getInput().getMouseX() - translationalX, gc.getInput().getMouseY() - translationalY);
+            Fonts.RETROGAMING.wrap(g, description, gc.getInput().getMouseX() - translationalX, gc.getInput().getMouseY() - translationalY, 18, 15);
         }
         g.setColor(Color.white);
         if(outlined) {
@@ -77,7 +79,7 @@ public abstract class Card {
 
     }
     public void renderDescrption(Graphics g, int x , int y){
-        g.drawString("Energy Cost: " + energyCost + "\n" + description, (float) (x + width * 0.05), (float) (y + height * 0.7));
+//        g.drawString("Energy Cost: " + energyCost + "\n" + description, );
     }
     public String getName()
     {
@@ -143,6 +145,7 @@ public abstract class Card {
         this.x = x;
         this.y = y;
     }
+
     public void hoveredPos(){
         y = Main.getScreenHeight() - height;
     }
