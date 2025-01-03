@@ -11,9 +11,9 @@ public class Images {
     public static Image BEAR_MOVESET;
     public static SpriteSheet BEAR_MOVES;
 
+    //Bear images
     public static Image EXTRA_STUFFING;
     public static Image SEWING;
-
     public static Image BEARS_YEARNING;
     public static Image PRIMAL_RAGE;
     public static Image FALLACY_RETURN;
@@ -38,8 +38,21 @@ public class Images {
     public static Image CONCEALED_CLAWS;
     public static Image BUTTON_BARRAGE;
     public static Image BEAR_HERO;
+
+    //Enemy Images
     public static Image ENEMY1;
     public static Image ENEMY2;
+
+    //Effect Symbols
+    public static Image BURNING;
+    public static Image HEALING;
+    public static Image MARKED;
+    public static Image POISONED;
+    public static Image SHIELD;
+    public static Image STRENGTH;
+    public static Image VULNERABLE;
+    public static Image WEAKENED;
+
     public static void loadImages()
     {
         try
@@ -48,6 +61,8 @@ public class Images {
             BACKGROUND = new Image("res/images/backgrounds/background.png");
 
             loadBearImages();
+
+            loadSymbols();
 
             ENEMY1 = new Image("res/images/entity/enemy/Green_Army_Soldier.png");
             ENEMY2 = new Image("res/images/entity/enemy/Rolling_Horse.png");
@@ -90,5 +105,15 @@ public class Images {
         BUTTON_BARRAGE = BEAR_MOVES.getSubImage(24, 0);
 
         BEAR_HERO = new Image("res/images/entity/hero/Toy_Bear.png");
+    }
+    public static void loadSymbols() throws SlickException{
+        BURNING = new Image("res/images/burning.png");
+        HEALING = new Image("res/images/healing.png");
+        MARKED = new Image("res/images/marked.png");
+        POISONED = new Image("res/images/poisoned.png");
+        SHIELD = new Image("res/images/shield.png");
+        STRENGTH = new Image("res/images/strength.png");
+        VULNERABLE = new Image("res/images/vulnerable.png");
+        WEAKENED = new Image("res/images/weakened.png");
     }
 }
