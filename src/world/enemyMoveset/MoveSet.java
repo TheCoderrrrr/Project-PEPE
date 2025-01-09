@@ -3,10 +3,12 @@ package world.enemyMoveset;
 import java.util.ArrayList;
 
 public class MoveSet {
-    private ArrayList<Move> moveSet;
+    protected ArrayList<Move> moveSet;
+    protected int curMove;
     public MoveSet()
     {
         moveSet = new ArrayList<>();
+        curMove = 0;
     }
     public ArrayList<Move> getMoveSet()
     {
@@ -15,5 +17,8 @@ public class MoveSet {
     public void addMove(Move m)
     {
         moveSet.add(m);
+    }
+    public void useMove(){
+        moveSet.get(curMove).action();
     }
 }
