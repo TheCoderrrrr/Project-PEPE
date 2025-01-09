@@ -1,5 +1,6 @@
 package world.effects.debuff;
 
+import resources.Images;
 import world.effects.Effect;
 import world.entity.Entity;
 
@@ -10,6 +11,7 @@ public class Vulnerable extends Effect {
         super(e, duration);
         this.multiplier = multiplier;
         name = "Vulnerable";
+        symbol = Images.VULNERABLE;
     }
 
     public float getMultiplier() {

@@ -1,5 +1,6 @@
 package world.effects;
 
+import org.newdawn.slick.Image;
 import world.entity.Entity;
 
 abstract public class Effect {
@@ -7,6 +8,7 @@ abstract public class Effect {
     protected int duration;
     protected String name;
     protected int maxDuration;
+    protected Image symbol;
 
     public Effect(Entity e, int duration) {;
         target = e;
@@ -32,5 +34,8 @@ abstract public class Effect {
     public void resetDuration()
     {
         duration = maxDuration;
+    }
+    public Image getSymbol(){
+        return symbol;
     }
 }

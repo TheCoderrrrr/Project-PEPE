@@ -1,5 +1,6 @@
 package world.effects.debuff;
 
+import resources.Images;
 import world.effects.Effect;
 import world.entity.Entity;
 
@@ -10,6 +11,7 @@ public class Poison extends Effect {
         super(e, duration);
         this.intensity = intensity;
         name = "Poisoned";
+        symbol = Images.POISONED;
     }
 
     @Override

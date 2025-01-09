@@ -82,8 +82,8 @@ public class GameUI {
             for(int i = 0; i < e.getActiveEffects().size(); i++)
             {
                 Effect effect = e.getActiveEffects().get(i);
-                g.drawString("Effect: " + effect.getName() + " Turns Left: " + effect.getDuration(), (float) e.getX(), (float) (e.getY() + e.getHeight() + Main.getScreenHeight() * (0.02 + i * 0.01)));
-
+                g.drawImage(effect.getSymbol(), (float) e.getX(), (float) (e.getY() + e.getHeight() + (Main.getScreenHeight() * 0.02 + i * 0.01)));
+//                g.drawString("Effect: " + effect.getName() + " Turns Left: " + effect.getDuration(), (float) e.getX(), (float) (e.getY() + e.getHeight() + Main.getScreenHeight() * (0.02 + i * 0.01)));
             }
         }
     }

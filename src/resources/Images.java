@@ -107,13 +107,13 @@ public class Images {
         BEAR_HERO = new Image("res/images/entity/hero/Toy_Bear.png");
     }
     public static void loadSymbols() throws SlickException{
-        BURNING = new Image("res/images/burning.png");
-        HEALING = new Image("res/images/healing.png");
-        MARKED = new Image("res/images/marked.png");
-        POISONED = new Image("res/images/poisoned.png");
-        SHIELD = new Image("res/images/shield.png");
-        STRENGTH = new Image("res/images/strength.png");
-        VULNERABLE = new Image("res/images/vulnerable.png");
-        WEAKENED = new Image("res/images/weakened.png");
+        BURNING = new Image("res/images/effects/burning.png").getScaledCopy(64, 64);
+        HEALING = new Image("res/images/effects/healing.png");
+        MARKED = new Image("res/images/effects/marked.png");
+        POISONED = new Image("res/images/effects/poisoned.png");
+        SHIELD = new Image("res/images/effects/shield.png");
+        STRENGTH = new Image("res/images/effects/strength.png");
+        VULNERABLE = new Image("res/images/effects/vulnerable.png");
+        WEAKENED = new Image("res/images/effects/weakened.png");
     }
 }

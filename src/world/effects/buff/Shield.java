@@ -1,5 +1,6 @@
 package world.effects.buff;
 
+import resources.Images;
 import world.effects.Effect;
 import world.entity.Entity;
 
@@ -9,6 +10,7 @@ public class Shield extends Effect {
         super(e, duration);
         this.multiplier = amount;
         name = "Shield";
+        symbol = Images.SHIELD;
     }
     public float getMultiplier()
     {

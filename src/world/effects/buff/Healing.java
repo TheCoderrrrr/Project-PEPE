@@ -1,5 +1,6 @@
 package world.effects.buff;
 
+import resources.Images;
 import world.effects.Effect;
 import world.entity.Entity;
 
@@ -9,6 +10,7 @@ public class Healing extends Effect {
         super(e, duration);
         healingAmount *= intensity;
         name = "Healing";
+        symbol = Images.HEALING;
     }
 
     @Override

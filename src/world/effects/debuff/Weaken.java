@@ -1,5 +1,6 @@
 package world.effects.debuff;
 
+import resources.Images;
 import world.cards.Card;
 import world.cards.StatusEffect;
 import world.effects.Effect;
@@ -11,6 +12,7 @@ public class Weaken extends Effect {
         super(e, duration);
         this.multiplier = multiplier;
         name = "Weakened";
+        symbol = Images.WEAKENED;
     }
 
     public float getMultiplier() {
