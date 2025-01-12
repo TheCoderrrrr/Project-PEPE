@@ -83,11 +83,11 @@ public class Game extends BasicGameState
 		{
 			if(World.isPlayerTurn())
 			{
-				world.endPlayerTurn();
+				World.endPlayerTurn();
 			}
 		}
 		if(key == Input.KEY_Q) {
-			world.entityManager.getEntities().removeIf(entity -> !(entity instanceof PlayerUnit));
+			World.entityManager.getEntities().removeIf(entity -> !(entity instanceof PlayerUnit));
 		}
 	}
 	

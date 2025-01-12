@@ -20,7 +20,7 @@ public class World {
     public static EntityManager entityManager;
     private GameContainer gc;
     private StateBasedGame sbg;
-    private int turn = 0;
+    private static int turn = 0;
     private static boolean playerTurn;
     private static String mode;
     private static ArrayList<FloatText> text;
@@ -49,6 +49,13 @@ public class World {
     }
 
     public void update(int delta) {
+
+
+        if(!playerTurn && !entityManager.isAnimating())
+        {
+            entityManager.enemyTurn();
+        }
+
         CardManager.update(delta);
         entityManager.update();
         Player.updateEffects(entityManager.getEntities().getFirst().getActiveEffects());
@@ -64,11 +71,6 @@ public class World {
         }
 
 
-        if(!playerTurn)
-        {
-            entityManager.enemyTurn();
-            endEnemyTurn();
-        }
         if(entityManager.enemiesKilled()) {
             if(mode.equals("Select")) {
                 mode = "Game";
@@ -85,17 +87,13 @@ public class World {
             Game.lose();
         }
     }
-    public void endPlayerTurn()
+    public static void endPlayerTurn()
     {
-        CardManager.endTurn();
-    }
-    public void endEnemyTurn()
-    {
-        entityManager.endTurn();
-        nextTurn();
+        World.setPlayerTurn(false);
     }
 
-    public void nextTurn() {
+
+    public static void nextTurn() {
         turn++;
         CardManager.resetHand();
         CardManager.resetEnergy();
@@ -120,8 +118,8 @@ public class World {
     {
         return playerTurn;
     }
-    public static void setPlayerTurn(boolean playerTurn1) {
-        playerTurn = playerTurn1;
+    public static void setPlayerTurn(boolean playerTurn) {
+        World.playerTurn = playerTurn;
     }
 
     public static SelectionManager getSelectionManager() {

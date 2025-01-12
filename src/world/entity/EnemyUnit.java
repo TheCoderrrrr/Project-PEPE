@@ -14,6 +14,7 @@ import world.enemyMoveset.PlannedMoveSet;
 
 public class EnemyUnit extends Entity{
     private MoveSet moveSet;
+
     public EnemyUnit(int x, int y) {
         super(x, y);
         if(Math.random() < 0.5)

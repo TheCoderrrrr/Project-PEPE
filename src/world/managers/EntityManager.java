@@ -11,13 +11,19 @@ import world.entity.PlayerUnit;
 import java.util.ArrayList;
 
 public class EntityManager {
-    private ArrayList<Entity> entities;
+    private final ArrayList<EnemyUnit> animationOrder;
+    private final ArrayList<Entity> entities;
+    private boolean animating;
+
     public EntityManager()
     {
         entities = new ArrayList<>();
+        animationOrder = new ArrayList<>();
         entities.add(new PlayerUnit((int) (Main.getScreenWidth() * 0.15), (int) (Main.getScreenHeight() * 0.6)));
         newRound();
     }
+
+    public boolean isAnimating() {return animating;}
 
     public void newRound() {
         entities.add(new EnemyUnit((int) (Main.getScreenWidth() * 0.65), (int) (Main.getScreenHeight() * 0.6)));
@@ -27,6 +33,7 @@ public class EntityManager {
     public boolean enemiesKilled() {
         return entities.size() == 1;
     }
+
     public void render(Graphics g){
         for(Entity e : entities)
         {
@@ -35,17 +42,49 @@ public class EntityManager {
     }
     public void update(){
 
-        for(int i = 0; i < entities.size(); i++)
-        {
-            if(entities.get(i) instanceof EnemyUnit)
+        if(World.isPlayerTurn()) {
+
+            //regular update loop, kill enemies if 0 hp
+            for(int i = 0; i < entities.size(); i++)
             {
-                if(entities.get(i).getCurHealth() <= 0)
+                if(entities.get(i) instanceof EnemyUnit)
                 {
-                    entities.remove(i);
-                    i--;
+                    if(entities.get(i).getCurHealth() <= 0)
+                    {
+                        entities.remove(i);
+                        i--;
+                    }
+                }
+            }
+
+
+
+        } else {
+
+            //enemy is attacking, perform animations
+
+            if(animationOrder.isEmpty()) {
+                endTurn();
+                World.setPlayerTurn(true);
+                animating = false;
+                World.nextTurn();
+            } else {
+                animationOrder.getFirst().continueAnimation();
+                if(animationOrder.getFirst().completedAnimation()) {
+                    animationOrder.getFirst().resetAnimation();
+
+                    animationOrder.getFirst().action(entities.getFirst());
+                    //attack the player once animation is complete
+
+                    animationOrder.removeFirst();
+
+                    System.out.println(animationOrder);
+                    //remove this from the animation queue
                 }
             }
         }
+
+
     }
 
     public void endTurn() {
@@ -55,15 +94,17 @@ public class EntityManager {
     }
     public void enemyTurn()
     {
-
+        animating = true;
+        animationOrder.clear();
         for(Entity e : entities)
         {
             if(e instanceof EnemyUnit)
             {
-                ((EnemyUnit) e).action(entities.getFirst());
+                animationOrder.add((EnemyUnit) e);
             }
         }
-        World.setPlayerTurn(true);
+
+        System.out.println(animationOrder);
     }
     public ArrayList<Entity> getEntities()
     {

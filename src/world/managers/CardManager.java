@@ -58,9 +58,6 @@ public class CardManager {
         deck.add(c);
     }
 
-    public static void endTurn() {
-        World.setPlayerTurn(false);
-    }
 
     //call when the enemy ends their turn
     public static void resetHand() {
@@ -103,18 +100,18 @@ public class CardManager {
         return hand;
     }
 
-    public static void updateRotation(Card c) {
-        double cardX = c.getCenterX();
-        double cardY = c.getCenterY();
-        double zeroX = (double) Main.getScreenWidth() / 2;
-        double zeroY = Main.getScreenHeight() * 2;
-
-        cardX = zeroX + cardX;
-        cardY = zeroY + cardY;
-
-        float rotation = (float) (Math.atan2(cardX, cardY) * 180 / Math.PI);
-        c.setRotation(rotation);
-    }
+//    public static void updateRotation(Card c) {
+//        double cardX = c.getCenterX();
+//        double cardY = c.getCenterY();
+//        double zeroX = (double) Main.getScreenWidth() / 2;
+//        double zeroY = Main.getScreenHeight() * 2;
+//
+//        cardX = zeroX + cardX;
+//        cardY = zeroY + cardY;
+//
+//        float rotation = (float) (Math.atan2(cardX, cardY) * 180 / Math.PI);
+//        c.setRotation(rotation);
+//    }
 
     public static void mousePressed(int button, int x, int y) {
         if (button == 1) {

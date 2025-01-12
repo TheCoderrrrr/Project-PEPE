@@ -28,6 +28,8 @@ public abstract class Entity {
     protected ArrayList<Effect> activeEffects;
     protected StatusEffectPanel statusEffectPanel;
 
+    protected int animationFrame;
+
     public Entity(int x, int y) {
         activeEffects = new ArrayList<>();
         this.x = x;
@@ -39,9 +41,10 @@ public abstract class Entity {
         statusEffectPanel = new StatusEffectPanel(x, y + height, 96, 96);
     }
 
-    public void newRound() {
-        curHealth = maxHealth;
-    }
+    public boolean completedAnimation() {return animationFrame >= 20;}
+    public void continueAnimation() {animationFrame++;}
+    public void resetAnimation() {animationFrame = 0;}
+
 
     public void endTurn() {
         for(Effect e : activeEffects) {
@@ -107,9 +110,9 @@ public abstract class Entity {
 
     public void render(Graphics g) {
         g.setColor(Color.white);
-        g.drawImage(image,x , y);
+        g.drawImage(image,x - animationFrame , y);
         g.setColor(Color.blue);
-        g.drawString(""+ curHealth, x, y);
+        g.drawString(""+ curHealth, x - animationFrame, y);
         statusEffectPanel.render(g);
     }
     public int getWidth()
