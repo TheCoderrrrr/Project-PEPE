@@ -2,8 +2,11 @@ package world.entity;
 
 import resources.Images;
 import world.effects.Effect;
+import world.effects.buff.Healing;
 import world.effects.buff.Shield;
+import world.effects.debuff.Burn;
 import world.effects.debuff.Mark;
+import world.effects.debuff.Poison;
 import world.effects.debuff.Vulnerable;
 
 import java.util.ArrayList;
@@ -14,6 +17,11 @@ public class PlayerUnit extends Entity{
     public PlayerUnit(int x, int y) {
         super(x, y);
         image = Images.BEAR_HERO;
+        addEffect(new Burn(this, 10));
+        addEffect(new Healing(this, 10, 10));
+        addEffect(new Shield(this, 10, 10));
+        addEffect(new Mark(this, 10, 10));
+        addEffect(new Poison(this, 10, 10));
     }
     public ArrayList<Effect> getEffects()
     {

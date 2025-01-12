@@ -10,6 +10,7 @@ import world.effects.debuff.Weaken;
 import world.enemyMoveset.BABA;
 import world.enemyMoveset.BasicAttack;
 import world.enemyMoveset.MoveSet;
+import world.enemyMoveset.PlannedMoveSet;
 
 public class EnemyUnit extends Entity{
     private MoveSet moveSet;
@@ -21,7 +22,7 @@ public class EnemyUnit extends Entity{
         }else{
             image = Images.ENEMY2;
         }
-        moveSet = new MoveSet();
+        moveSet = new PlannedMoveSet();
         moveSet.addMove(new BasicAttack());
         moveSet.addMove(new BABA());
     }
@@ -58,6 +59,7 @@ public class EnemyUnit extends Entity{
         {
             multiplier *= Player.getCritMultiplier();
         }
+
         curHealth = Math.max(0, curHealth - Math.round(damage * multiplier));
     }
 }

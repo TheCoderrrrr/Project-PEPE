@@ -8,6 +8,7 @@ import world.effects.Effect;
 import world.effects.buff.Shield;
 import world.effects.debuff.Mark;
 import world.managers.EntityManager;
+import world.ui.panel.StatusEffectPanel;
 
 import java.util.ArrayList;
 
@@ -25,6 +26,7 @@ public abstract class Entity {
     protected Image image;
     protected EntityManager entityManager;
     protected ArrayList<Effect> activeEffects;
+    protected StatusEffectPanel statusEffectPanel;
 
     public Entity(int x, int y) {
         activeEffects = new ArrayList<>();
@@ -34,6 +36,7 @@ public abstract class Entity {
         height = 200;
         curHealth = 100;
         maxHealth = curHealth;
+        statusEffectPanel = new StatusEffectPanel(x, y + height, 96, 96);
     }
 
     public void newRound() {
@@ -98,6 +101,7 @@ public abstract class Entity {
         if(!hasEffect)
         {
             activeEffects.add(e);
+            statusEffectPanel.updateStatusEffects(activeEffects);
         }
     }
 
@@ -106,6 +110,7 @@ public abstract class Entity {
         g.drawImage(image,x , y);
         g.setColor(Color.blue);
         g.drawString(""+ curHealth, x, y);
+        statusEffectPanel.render(g);
     }
     public int getWidth()
     {

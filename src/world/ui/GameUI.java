@@ -36,7 +36,7 @@ public class GameUI {
         g.setColor(Color.red);
         renderHealthBars(g);
         renderEnergy(g);
-        renderEffects(g);
+//        renderEffects(g);
     }
     public void update()
     {

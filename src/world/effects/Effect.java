@@ -31,11 +31,11 @@ abstract public class Effect {
     {
         return name;
     }
+    public Image getSymbol(){
+        return symbol;
+    }
     public void resetDuration()
     {
         duration = maxDuration;
-    }
-    public Image getSymbol(){
-        return symbol;
     }
 }

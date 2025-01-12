@@ -1,6 +1,7 @@
 package world.enemyMoveset;
 
 import world.entity.EnemyUnit;
+import world.entity.Entity;
 
 public abstract class Move {
     private int damage;
@@ -8,7 +9,7 @@ public abstract class Move {
     public Move() {
 
     }
-    public abstract void action();
+    public abstract void action(Entity entity);
 
 
     public int getDamage() {

@@ -2,6 +2,7 @@ package world;
 
 import core.Game;
 import core.Main;
+import org.newdawn.slick.Font;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.state.StateBasedGame;
@@ -9,6 +10,9 @@ import world.cards.Card;
 import world.managers.CardManager;
 import world.managers.EntityManager;
 import world.managers.SelectionManager;
+import world.ui.FloatText;
+
+import java.util.ArrayList;
 
 public class World {
     private static CardManager cardManager;
@@ -19,6 +23,7 @@ public class World {
     private int turn = 0;
     private static boolean playerTurn;
     private static String mode;
+    private static ArrayList<FloatText> text;
 
     public World(StateBasedGame sbg, GameContainer gc, CardManager cardManager, EntityManager entityManager) {
         this.sbg = sbg;
@@ -26,6 +31,7 @@ public class World {
         Card.setgc(gc);
         playerTurn = true;
         selectionManager = new SelectionManager(sbg, gc);
+        text = new ArrayList<>();
         World.cardManager = cardManager;
         World.entityManager = entityManager;
         mode = "Game";
@@ -36,6 +42,10 @@ public class World {
         entityManager.render(g);
         CardManager.render(g);
 
+
+        for(FloatText t : text) {
+            t.render(g);
+        }
     }
 
     public void update(int delta) {
@@ -43,6 +53,17 @@ public class World {
         entityManager.update();
         Player.updateEffects(entityManager.getEntities().getFirst().getActiveEffects());
         Player.updateStats();
+
+
+        for(int i=0; i<text.size(); i++) {
+            text.get(i).update();
+            if(text.get(i).expired()) {
+                text.remove(i);
+                i--;
+            }
+        }
+
+
         if(!playerTurn)
         {
             entityManager.enemyTurn();
@@ -106,4 +127,9 @@ public class World {
     public static SelectionManager getSelectionManager() {
         return selectionManager;
     }
+
+    public static void addText(int x, int y, int size, String s, Font f) {
+        text.add(new FloatText(x, y, size, s, f));
+    }
+
 }
