@@ -1,8 +1,7 @@
 package world.enemyMoveset;
 
+import world.enemyMoveset.moves.Move;
 import world.entity.Entity;
-
-import java.util.ArrayList;
 
 public class RandomMoveSet extends MoveSet{
     public RandomMoveSet(){
@@ -10,7 +9,8 @@ public class RandomMoveSet extends MoveSet{
     }
     public void useMove(Entity entity){
         curMove = nextMove;
-//        moveSet.get(curMove).action();
+        moveSet.get(curMove).action(entity);
+        System.out.println(moveSet.get(curMove).getClass().getSimpleName());
         nextMove = (int) (Math.random() * moveSet.size());
     }
 
@@ -21,6 +21,6 @@ public class RandomMoveSet extends MoveSet{
 
     @Override
     public Move getCurMove() {
-        return null;
+        return moveSet.get(curMove);
     }
 }

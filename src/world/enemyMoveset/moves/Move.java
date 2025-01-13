@@ -1,6 +1,5 @@
-package world.enemyMoveset;
+package world.enemyMoveset.moves;
 
-import world.entity.EnemyUnit;
 import world.entity.Entity;
 
 public abstract class Move {

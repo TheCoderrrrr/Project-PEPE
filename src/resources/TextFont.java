@@ -112,8 +112,6 @@ public class TextFont {
                 trimmedLine.append(word).append(" ");
             } else {
                 allLines.append(trimmedLine).append(LINEBREAK);
-                System.out.println(width);
-                System.out.println(g.getFont().getWidth(trimmedLine.toString()) * scale);
 
                 trimmedLine = new StringBuilder();
                 trimmedLine.append(word).append(" ");

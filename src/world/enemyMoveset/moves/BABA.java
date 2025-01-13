@@ -1,4 +1,4 @@
-package world.enemyMoveset;
+package world.enemyMoveset.moves;
 
 import world.cards.StatusEffect;
 import world.effects.debuff.Burn;
@@ -8,7 +8,7 @@ public class BABA extends Move implements StatusEffect {
 
     @Override
     public void action(Entity entity) {
-        entity.takeDamage(10);
+        entity.takeDamage( 0);
     }
 
     @Override

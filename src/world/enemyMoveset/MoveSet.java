@@ -1,5 +1,6 @@
 package world.enemyMoveset;
 
+import world.enemyMoveset.moves.Move;
 import world.entity.Entity;
 
 import java.util.ArrayList;
