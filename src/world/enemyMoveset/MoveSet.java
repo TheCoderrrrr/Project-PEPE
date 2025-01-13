@@ -1,5 +1,7 @@
 package world.enemyMoveset;
 
+import world.entity.Entity;
+
 import java.util.ArrayList;
 
 public abstract class MoveSet {
@@ -20,6 +22,7 @@ public abstract class MoveSet {
     {
         moveSet.add(m);
     }
-    public abstract void useMove();
+    public abstract void useMove(Entity entity);
     public abstract Move getNextMove();
+    public abstract Move getCurMove();
 }

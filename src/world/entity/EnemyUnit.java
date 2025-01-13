@@ -2,6 +2,7 @@ package world.entity;
 
 import resources.Images;
 import world.Player;
+import world.cards.StatusEffect;
 import world.effects.Effect;
 import world.effects.buff.Shield;
 import world.effects.debuff.Mark;
@@ -26,18 +27,23 @@ public class EnemyUnit extends Entity{
         moveSet = new PlannedMoveSet();
         moveSet.addMove(new BasicAttack());
         moveSet.addMove(new BABA());
+        activeEffects.add(new Shield(this, 100, 100));
     }
     public void action(Entity e)
     {
-        float damageMultiplier = 1;
-        for(Effect effect : activeEffects)
-        {
-            if(effect instanceof Weaken)
-            {
-                damageMultiplier -= ((Weaken) effect).getMultiplier();
-            }
+        moveSet.useMove(e);
+        if(moveSet.getCurMove() instanceof StatusEffect){
+            ((StatusEffect) moveSet.getCurMove()).applyEffect(e);
         }
-        e.takeDamage((int) (10 * damageMultiplier));
+//        float damageMultiplier = 1;
+//        for(Effect effect : activeEffects)
+//        {
+//            if(effect instanceof Weaken)
+//            {
+//                damageMultiplier -= ((Weaken) effect).getMultiplier();
+//            }
+//        }
+//        e.takeDamage((int) (10 * damageMultiplier));
     }
     public void takeDamage(int damage)
     {

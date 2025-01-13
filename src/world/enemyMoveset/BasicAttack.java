@@ -11,7 +11,7 @@ public class BasicAttack extends Move{
     }
     public void action(Entity entity)
     {
-
+        entity.takeDamage(10);
     }
 
     public int getDamage() {
