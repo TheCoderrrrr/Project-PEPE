@@ -11,6 +11,7 @@ public class Healing extends Effect {
         healingAmount *= intensity;
         name = "Healing";
         symbol = Images.HEALING;
+        info = "Restores health to the player.";
     }
 
     @Override

@@ -10,6 +10,7 @@ public class Burn extends Effect {
         super(e, duration);
         name = "Burning";
         symbol = Images.BURNING;
+        info = "Deals damage over time, spreading through the enemies.";
     }
 
     @Override

@@ -11,6 +11,7 @@ public class StrengthBoost extends Effect {
         this.multiplier = amount;
         name = "StrengthBoost";
         symbol = Images.STRENGTH;
+        info = "Temporarily increases the damage of the attacks.";
     }
     public float getMultiplier()
     {

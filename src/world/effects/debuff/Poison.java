@@ -12,6 +12,7 @@ public class Poison extends Effect {
         this.intensity = intensity;
         name = "Poisoned";
         symbol = Images.POISONED;
+        info = "Deals damage to the affected enemy over time.";
     }
 
     @Override

@@ -12,6 +12,7 @@ public class Vulnerable extends Effect {
         this.multiplier = multiplier;
         name = "Vulnerable";
         symbol = Images.VULNERABLE;
+        info = "Increases the damage taken by the affected enemy.";
     }
 
     public float getMultiplier() {

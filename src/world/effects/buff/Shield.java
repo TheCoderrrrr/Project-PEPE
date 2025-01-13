@@ -11,6 +11,7 @@ public class Shield extends Effect {
         this.multiplier = amount;
         name = "Shield";
         symbol = Images.SHIELD;
+        info = "Blocks the next enemy's attack.";
     }
     public float getMultiplier()
     {

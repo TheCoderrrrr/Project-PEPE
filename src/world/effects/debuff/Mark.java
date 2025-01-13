@@ -12,6 +12,7 @@ public class Mark extends Effect {
         this.multiplier = multiplier;
         name = "Marked";
         symbol = Images.MARKED;
+        info = "Makes the affected enemy take additional damage when attacked.";
     }
 
     public float getMultiplier() {
