@@ -70,7 +70,7 @@ public abstract class Card {
             g.drawImage(image, gc.getInput().getMouseX() - translationalX, gc.getInput().getMouseY() - translationalY);
             g.setColor(Color.black);
             g.drawString(getName(), (float) (gc.getInput().getMouseX() - translationalX + (width * 0.05)), (float) (gc.getInput().getMouseY() - translationalY + height * 0.02));
-            Fonts.RETROGAMING.wrap(g, description, gc.getInput().getMouseX() - translationalX, gc.getInput().getMouseY() - translationalY, 18, 15);
+            Fonts.RETROGAMING.wrap(g, description, gc.getInput().getMouseX() - translationalX + (float) (width * 0.05), gc.getInput().getMouseY() - translationalY + (float) (height * 0.7), 18, 15);
         }
         g.setColor(Color.white);
         if(outlined) {

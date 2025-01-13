@@ -11,6 +11,7 @@ import world.managers.CardManager;
 import world.managers.EntityManager;
 import world.managers.SelectionManager;
 import world.ui.FloatText;
+import world.ui.panel.Panel;
 
 import java.util.ArrayList;
 
@@ -29,6 +30,7 @@ public class World {
         this.sbg = sbg;
         this.gc = gc;
         Card.setgc(gc);
+        Panel.setGC(gc);
         playerTurn = true;
         selectionManager = new SelectionManager(sbg, gc);
         text = new ArrayList<>();

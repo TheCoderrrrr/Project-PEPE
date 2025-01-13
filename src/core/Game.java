@@ -1,5 +1,6 @@
 package core;
 
+import org.lwjgl.input.Controller;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -63,6 +64,7 @@ public class Game extends BasicGameState
 		g.drawImage(Images.BACKGROUND.getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight()), 0, 0);
 		world.render(g);
 		ui.render(g);
+
 	}
 	
 	public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException 

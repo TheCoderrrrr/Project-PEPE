@@ -1,7 +1,9 @@
 package world.effects;
 
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import world.entity.Entity;
+import world.ui.panel.Tooltip;
 
 abstract public class Effect {
     protected Entity target;
@@ -9,6 +11,7 @@ abstract public class Effect {
     protected String name;
     protected int maxDuration;
     protected Image symbol;
+    protected String info;
 
     public Effect(Entity e, int duration) {;
         target = e;
@@ -38,4 +41,8 @@ abstract public class Effect {
     {
         duration = maxDuration;
     }
+    public String getInfo(){
+        return info;
+    }
+
 }

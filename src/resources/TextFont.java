@@ -14,6 +14,7 @@ public class TextFont {
     private UnicodeFont baseFont;
     private String text;
 
+
     public TextFont(TextFont font)
     {
         this.baseFont = font.baseFont;
@@ -45,7 +46,6 @@ public class TextFont {
     public void drawString(Graphics g, String text, float x, float y, float size)
     {
         float scale = size / DEFAULT_FONT_SIZE;
-
         g.setFont(this.baseFont);
         g.scale(scale, scale);
         g.drawString(text, x / scale, y / scale);
@@ -82,19 +82,6 @@ public class TextFont {
         g.resetTransform();
         g.resetFont();
     }
-    public void drawWrappedString(Graphics g, String text, float x, float y, float w, float h, float size)
-    {
-        float scale = size / DEFAULT_FONT_SIZE;
-
-        this.text = text;
-        int textWidth = getPixelWidth();
-        int textHeight = getPixelHeight();
-
-        if(textWidth > w)
-        {
-
-        }
-    }
     public void wrap(Graphics g, String text, float x, float y, float w, float size) {
         float scale = size / DEFAULT_FONT_SIZE;
         g.setFont(this.baseFont);
@@ -103,21 +90,25 @@ public class TextFont {
 
         StringBuilder b = new StringBuilder();
         for (String line : text.split(Pattern.quote(LINEBREAK))) {
-            b.append(wrapLine(line, w));
+            b.append(wrapLine(g, line, w, scale));
         }
         g.drawString(b.toString(), x / scale, y / scale);
         g.resetTransform();
         g.resetFont();
     }
 
-    private static String wrapLine(String line, float width) {
-        if (line.length() == 0) return LINEBREAK;
-        if (line.length() <= width) return line + LINEBREAK;
+    private static String wrapLine(Graphics g, String line, float width, float scale) {
+        if (line.isEmpty()){
+            return LINEBREAK;
+        }
+        if (g.getFont().getWidth(line) * scale <= width){
+            return line + LINEBREAK;
+        }
         String[] words = line.split(" ");
         StringBuilder allLines = new StringBuilder();
         StringBuilder trimmedLine = new StringBuilder();
         for (String word : words) {
-            if (trimmedLine.length() + 1 + word.length() <= width) {
+            if (trimmedLine.length() + 1 + g.getFont().getWidth(word) * scale <= width) {
                 trimmedLine.append(word).append(" ");
             } else {
                 allLines.append(trimmedLine).append(LINEBREAK);
@@ -135,9 +126,22 @@ public class TextFont {
     {
         return baseFont.getWidth(text);
     }
-    public int getPixelHeight()
-    {
-        return baseFont.getHeight(text);
-    }
+    public float getHeight(Graphics g, String text, float w, float size) {
+        float scale = size / DEFAULT_FONT_SIZE;
+        g.setFont(this.baseFont);
+        g.scale(scale, scale);
 
+        int lineCount = 1;
+
+
+        for (String line : text.split(Pattern.quote(LINEBREAK))) {
+            String wrapped = wrapLine(g, line, w, scale);
+            lineCount += wrapped.split(Pattern.quote(LINEBREAK)).length - 1;
+        }
+        float lineHeight = g.getFont().getLineHeight();
+        g.resetTransform();
+        g.resetFont();
+
+        return lineCount * lineHeight * scale;
+    }
 }
