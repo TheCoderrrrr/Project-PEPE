@@ -11,7 +11,9 @@ public class Tooltip extends Panel {
     }
 
     public void render(Graphics g, String description){
-        g.setColor(Color.black);
-        Fonts.COFFEEHEALINGITALIC.wrap(g, description, x, y, width, height);
+        g.setColor(Color.blue);
+        g.fillRect(x, y, width, Fonts.COFFEEHEALINGITALIC.getHeight(g, description, width - 10, 20));
+        g.setColor(Color.white);
+        Fonts.COFFEEHEALINGITALIC.wrap(g, description, x, y, width, 20);
     }
 }
