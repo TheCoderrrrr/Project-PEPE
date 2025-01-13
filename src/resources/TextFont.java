@@ -108,10 +108,13 @@ public class TextFont {
         StringBuilder allLines = new StringBuilder();
         StringBuilder trimmedLine = new StringBuilder();
         for (String word : words) {
-            if (trimmedLine.length() + 1 + g.getFont().getWidth(word) * scale <= width) {
+            if ((g.getFont().getWidth(trimmedLine + " ") + g.getFont().getWidth(word)) * scale <= width) {
                 trimmedLine.append(word).append(" ");
             } else {
                 allLines.append(trimmedLine).append(LINEBREAK);
+                System.out.println(width);
+                System.out.println(g.getFont().getWidth(trimmedLine.toString()) * scale);
+
                 trimmedLine = new StringBuilder();
                 trimmedLine.append(word).append(" ");
             }

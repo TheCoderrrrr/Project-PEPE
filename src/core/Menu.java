@@ -35,7 +35,6 @@ public class Menu extends BasicGameState {
         g.setColor(Color.blue);
         g.fillRect((float) (Main.getScreenWidth() * .25), (float) (Main.getScreenHeight() * .75), 50, Fonts.COFFEEHEALINGITALIC.getHeight(g, "WITH GREAT POWER COMES NO RESPONSIBILITY", 50, 20));
         g.setColor(Color.white);
-        System.out.println(Fonts.COFFEEHEALINGITALIC.getHeight(g, "WITH GREAT POWER COMES NO RESPONSIBILITY", 50, 20));
         Fonts.COFFEEHEALINGITALIC.wrap(g, "WITH GREAT POWER COMES NO RESPONSIBILITY", (float) (Main.getScreenWidth() * .25), (float) (Main.getScreenHeight() * .75), 50, 20);
         Fonts.MATCHA.wrap(g, "WITH GREAT POWER COMES NO RESPONSIBILITY", (float) (Main.getScreenWidth() * .35), (float) (Main.getScreenHeight() * .55), 200, 20);
         Fonts.SAZIGONE.wrap(g, "WITH GREAT POWER COMES NO RESPONSIBILITY", (float) (Main.getScreenWidth() * .45), (float) (Main.getScreenHeight() * .35), 200, 20);

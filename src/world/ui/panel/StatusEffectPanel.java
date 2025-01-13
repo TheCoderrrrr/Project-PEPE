@@ -23,7 +23,6 @@ public class StatusEffectPanel extends Panel{
         if (size == 0) {
             return;
         }
-        System.out.println(x + " : " + y);
 
         int height = (int) Math.ceil((double) size / width);
         this.height = height * activeEffects.getFirst().getSymbol().getHeight();
@@ -46,15 +45,12 @@ public class StatusEffectPanel extends Panel{
                 int effectWidth = effect.getSymbol().getWidth();
                 int effectHeight = effect.getSymbol().getHeight();
 
-                // Draw the effect symbol
                 g.drawImage(effect.getSymbol(), effectX, effectY);
 
-                // Check if the mouse is hovering over this effect
                 if (gc.getInput().getMouseX() >= effectX && gc.getInput().getMouseX() <= effectX + effectWidth &&
                         gc.getInput().getMouseY() >= effectY && gc.getInput().getMouseY() <= effectY + effectHeight) {
 
-                    // Draw a tooltip near the effect
-                    tooltip.render(g,effect.getName());
+                    tooltip.render(g,effect.getInfo());
                 }
             }
         }
