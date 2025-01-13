@@ -88,7 +88,6 @@ public abstract class Entity {
     public abstract void takeDamage(int damage);
     public void heal(float amount)
     {
-        System.out.println(amount);
         curHealth += (int) amount;
     }
     public void addEffect(Effect e) {

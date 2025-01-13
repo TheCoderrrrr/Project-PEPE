@@ -1,5 +1,6 @@
 package world.enemyMoveset;
 
+import world.enemyMoveset.moves.Move;
 import world.entity.Entity;
 
 public class PlannedMoveSet extends MoveSet{
@@ -20,7 +21,12 @@ public class PlannedMoveSet extends MoveSet{
 
     @Override
     public Move getNextMove() {
-        return moveSet.get(curMove++);
+        if(moveSet.size() - 1 > curMove)
+        {
+            return moveSet.get(curMove++);
+        }else{
+            return moveSet.getFirst();
+        }
     }
 
     @Override

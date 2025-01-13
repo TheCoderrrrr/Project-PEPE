@@ -78,7 +78,7 @@ public class EntityManager {
 
                     animationOrder.removeFirst();
 
-                    System.out.println(animationOrder);
+//                    System.out.println(animationOrder);
                     //remove this from the animation queue
                 }
             }
@@ -104,7 +104,7 @@ public class EntityManager {
             }
         }
 
-        System.out.println(animationOrder);
+//        System.out.println(animationOrder);
     }
     public ArrayList<Entity> getEntities()
     {

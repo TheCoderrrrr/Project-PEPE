@@ -7,11 +7,13 @@ import world.effects.Effect;
 import world.effects.buff.Shield;
 import world.effects.debuff.Mark;
 import world.effects.debuff.Vulnerable;
-import world.effects.debuff.Weaken;
-import world.enemyMoveset.BABA;
-import world.enemyMoveset.BasicAttack;
+import world.enemyMoveset.RandomMoveSet;
+import world.enemyMoveset.moves.BABA;
+import world.enemyMoveset.moves.BasicAttack;
 import world.enemyMoveset.MoveSet;
 import world.enemyMoveset.PlannedMoveSet;
+import world.enemyMoveset.moves.IDEK;
+import world.enemyMoveset.moves.RAA;
 
 public class EnemyUnit extends Entity{
     private MoveSet moveSet;
@@ -24,9 +26,11 @@ public class EnemyUnit extends Entity{
         }else{
             image = Images.ENEMY2;
         }
-        moveSet = new PlannedMoveSet();
+        moveSet = new RandomMoveSet();
         moveSet.addMove(new BasicAttack());
         moveSet.addMove(new BABA());
+        moveSet.addMove(new RAA());
+        moveSet.addMove(new IDEK());
         activeEffects.add(new Shield(this, 100, 100));
     }
     public void action(Entity e)
