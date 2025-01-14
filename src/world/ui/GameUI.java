@@ -36,7 +36,8 @@ public class GameUI {
         g.setColor(Color.red);
         renderHealthBars(g);
         renderEnergy(g);
-//        renderEffects(g);
+        renderEffects(g);
+        renderEnemyNextMove(g);
     }
     public void update()
     {
@@ -78,12 +79,14 @@ public class GameUI {
     {
         for(Entity e : entityManager.getEntities())
         {
-            g.setColor(Color.black);
-            for(int i = 0; i < e.getActiveEffects().size(); i++)
-            {
-                Effect effect = e.getActiveEffects().get(i);
-                g.drawImage(effect.getSymbol(), (float) e.getX(), (float) (e.getY() + e.getHeight() + (Main.getScreenHeight() * 0.02 + i * 0.01)));
-//                g.drawString("Effect: " + effect.getName() + " Turns Left: " + effect.getDuration(), (float) e.getX(), (float) (e.getY() + e.getHeight() + Main.getScreenHeight() * (0.02 + i * 0.01)));
+            e.getStatusEffectPanel().render(g);
+        }
+    }
+    public void renderEnemyNextMove(Graphics g) {
+        for(Entity e : entityManager.getEntities())
+        {
+            if(e instanceof EnemyUnit){
+                ((EnemyUnit) e).getNextMovePanel().render(g);
             }
         }
     }

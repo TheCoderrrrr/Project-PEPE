@@ -19,9 +19,9 @@ public abstract class MoveSet {
     {
         return moveSet;
     }
-    public void addMove(Move m)
+    public void addMove(ArrayList<Move> m)
     {
-        moveSet.add(m);
+        moveSet = m;
     }
     public abstract void useMove(Entity entity);
     public abstract Move getNextMove();

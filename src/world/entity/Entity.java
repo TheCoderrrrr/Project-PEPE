@@ -112,7 +112,6 @@ public abstract class Entity {
         g.drawImage(image,x - animationFrame , y);
         g.setColor(Color.blue);
         g.drawString(""+ curHealth, x - animationFrame, y);
-        statusEffectPanel.render(g);
     }
     public int getWidth()
     {
@@ -121,5 +120,8 @@ public abstract class Entity {
     public int getHeight()
     {
         return height;
+    }
+    public StatusEffectPanel getStatusEffectPanel(){
+        return statusEffectPanel;
     }
 }

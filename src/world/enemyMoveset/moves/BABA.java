@@ -4,7 +4,7 @@ import world.cards.StatusEffect;
 import world.effects.debuff.Burn;
 import world.entity.Entity;
 
-public class BABA extends Move implements StatusEffect {
+public class BABA extends BuffMove implements StatusEffect {
 
     @Override
     public void action(Entity entity) {

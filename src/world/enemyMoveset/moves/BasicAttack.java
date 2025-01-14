@@ -4,7 +4,7 @@ import world.cards.StatusEffect;
 import world.effects.debuff.Vulnerable;
 import world.entity.Entity;
 
-public class BasicAttack extends Move implements StatusEffect {
+public class BasicAttack extends AttackMove implements StatusEffect {
     private int damage;
 
     public BasicAttack() {

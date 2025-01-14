@@ -4,7 +4,7 @@ import world.cards.StatusEffect;
 import world.effects.debuff.Mark;
 import world.entity.Entity;
 
-public class RAA extends Move implements StatusEffect {
+public class RAA extends AttackMove implements StatusEffect {
     @Override
     public void applyEffect(Entity e) {
         e.addEffect(new Mark(e, 1, 3));

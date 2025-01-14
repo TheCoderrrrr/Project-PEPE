@@ -108,9 +108,12 @@ public class Images {
     }
     public static void loadSymbols() throws SlickException{
         BURNING = new Image("res/images/effects/burning.png").getScaledCopy(32, 32);
+        BURNING.setImageColor(255, 0,0);
         HEALING = new Image("res/images/effects/healing.png").getScaledCopy(32, 32);
+        HEALING.setImageColor(0, 255, 255);
         MARKED = new Image("res/images/effects/marked.png").getScaledCopy(32, 32);
         POISONED = new Image("res/images/effects/poisoned.png").getScaledCopy(32, 32);
+        POISONED.setImageColor	(147,229,30);
         SHIELD = new Image("res/images/effects/shield.png").getScaledCopy(32, 32);
         STRENGTH = new Image("res/images/effects/strength.png").getScaledCopy(32, 32);
         VULNERABLE = new Image("res/images/effects/vulnerable.png").getScaledCopy(32, 32);

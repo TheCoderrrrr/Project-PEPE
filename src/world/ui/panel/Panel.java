@@ -1,5 +1,6 @@
 package world.ui.panel;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
@@ -30,6 +31,7 @@ public class Panel {
         Panel.gc = gc;
     }
     public void render(Graphics g){
-        g.drawRect(x, y, width, height);
+        g.setColor(Color.blue );
+        g.fillRect(x, y, width, height);
     }
 }
