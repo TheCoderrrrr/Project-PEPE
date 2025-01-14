@@ -5,6 +5,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.state.StateBasedGame;
+import resources.Fonts;
 import world.cards.*;
 import world.cards.multi.attack.ButtonBarrage;
 import world.cards.multi.attack.NeedleToss;
@@ -27,6 +28,7 @@ public class SelectionManager {
     private static List<Card> cardSelection;
     private static GameContainer gc;
     private static StateBasedGame sbg;
+    private static boolean selected;
 
     public SelectionManager(StateBasedGame sbg, GameContainer gc) {
         SelectionManager.gc = gc;
@@ -76,8 +78,14 @@ public class SelectionManager {
     public static void render(Graphics g) {
         g.setColor(Color.white);
         g.drawString("SELECT A CARD", (float) Main.getScreenWidth()/2, (float) Main.getScreenHeight()/8 * 5);
-        g.drawRect((float) Main.getScreenWidth() /2 - 25, (float) (Main.getScreenHeight() * 3) /4 - 25, 50, 50);
-        g.drawString("Continue", (float) Main.getScreenWidth() /2, (float) (Main.getScreenHeight() * 3) /4);
+        if(selected)
+        {
+            g.setColor(Color.green);
+        }else{
+            g.setColor(Color.white);
+        }
+        g.drawRect((float) Main.getScreenWidth() / 2 - 50, (float) (Main.getScreenHeight() * 3) /4 - 40, 200, 50);
+        Fonts.DOGICAPIXEL.drawString(g, "Continue", (float) Main.getScreenWidth() / 2 - 50, (float) (Main.getScreenHeight() * 3) /4 - 25, 30);
         for(int i = 0; i < cardSelection.size(); i++)
         {
             Card c = cardSelection.get(i);
@@ -92,15 +100,20 @@ public class SelectionManager {
             if(c.isOver(x, y)) {
                 for(Card c1 : cardSelection) {
                     c1.unoutline();
+                    selected = false;
                 }
                 c.outline();
+                selected = true;
             }
         }
+        System.out.println(selected);
 
-        if(x < Main.getScreenWidth()/2 + 25 && x > Main.getScreenWidth()/2 - 25 && y > Main.getScreenHeight()*3/4 - 25 && y < Main.getScreenHeight()*3/4 + 25) {
+        if(x < Main.getScreenWidth()/2 + 150 && x > Main.getScreenWidth()/2 - 50 && y > Main.getScreenHeight()*3/4 - 40 && y < Main.getScreenHeight()*3/4 + 10) {
             //add selected card to deck
             for(Card c : cardSelection) {
                 if(c.isOutlined()) {
+                    c.unoutline();
+                    selected = false;
                     CardManager.addCardToDeck(c);
                     sbg.enterState(Main.GAME_ID);
                 }

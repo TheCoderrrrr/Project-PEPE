@@ -2,6 +2,7 @@ package world.ui;
 
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import resources.Fonts;
 
 public class Button {
     private final Image image;
@@ -18,8 +19,9 @@ public class Button {
         this.height = height;
     }
 
+
     public void render(Graphics g) {
-        g.drawImage(image, x, y, x+width, y+height, x, y, x+width, y+height);
+            g.drawImage(image, x, y, x+width, y+height, x, y, x+width, y+height);
     }
 
     public void mousePressed(int button, int x, int y) {

@@ -59,6 +59,14 @@ public class Images {
     public static Image VULNERABLE;
     public static Image WEAKENED;
 
+    public static SpriteSheet ENERGYCOSTS;
+
+    public static Image ENERGY0;
+    public static Image ENERGY1;
+    public static Image ENERGY2;
+    public static Image ENERGY3;
+    public static Image ENERGY4;
+
     public static void loadImages()
     {
         try

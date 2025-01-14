@@ -10,5 +10,6 @@ public class Stack extends EnemyUnit {
         width = image.getWidth();
         height = image.getHeight();
         maxHealth *= 2;
+        curHealth = maxHealth;
     }
 }
