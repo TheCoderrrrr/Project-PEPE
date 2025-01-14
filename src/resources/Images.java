@@ -59,7 +59,8 @@ public class Images {
     public static Image VULNERABLE;
     public static Image WEAKENED;
 
-    public static SpriteSheet ENERGYCOSTS;
+    public static Image ENERGYCOSTS;
+    public static SpriteSheet ENERGYSPRITESHEET;
 
     public static Image ENERGY0;
     public static Image ENERGY1;
@@ -86,7 +87,14 @@ public class Images {
             TRUCKENEMY = new Image("res/images/entity/enemy/miniboss/truck.png");
             GODZILLA = new Image("res/images/entity/enemy/boss/godzilla.png").getScaledCopy(3);
 
+            ENERGYCOSTS = new Image("res/images/gui/energy_costs.png");
+            ENERGYSPRITESHEET = new SpriteSheet(ENERGYCOSTS, 32, 32);
 
+            ENERGY0 = ENERGYSPRITESHEET.getSubImage(0, 0);
+            ENERGY1 = ENERGYSPRITESHEET.getSubImage(1, 0);
+            ENERGY2 = ENERGYSPRITESHEET.getSubImage(2, 0);
+            ENERGY3 = ENERGYSPRITESHEET.getSubImage(3, 0);
+            ENERGY4 = ENERGYSPRITESHEET.getSubImage(4, 0);
         }
         catch (SlickException e)
         {

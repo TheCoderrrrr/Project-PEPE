@@ -15,6 +15,7 @@ public class NeedleToss extends GlobalCard {
         name = "Needle Toss";
         description = "20 dmg to all enemies";
         image = Images.NEEDLE_TOSS;
+        energyCostImage = Images.ENERGY2;
     }
 
     @Override

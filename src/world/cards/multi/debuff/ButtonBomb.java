@@ -14,6 +14,7 @@ public class ButtonBomb extends GlobalCard implements StatusEffect {
         name = "Button Bomb";
         description = "Adds Mark Effect";
         image = Images.BUTTON_BOMB;
+        energyCostImage = Images.ENERGY2;
     }
 
     @Override

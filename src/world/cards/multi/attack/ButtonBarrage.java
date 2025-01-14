@@ -10,5 +10,6 @@ public class ButtonBarrage extends GlobalCard {
         energyCost = 1;
         name = "Button Barrage";
         image = Images.BUTTON_BARRAGE;
+        energyCostImage = Images.ENERGY1;
     }
 }

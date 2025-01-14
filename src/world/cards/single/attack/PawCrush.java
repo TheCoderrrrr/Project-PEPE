@@ -14,6 +14,7 @@ public class PawCrush extends TargetedCard implements StatusEffect {
         name = "Paw Crush";
         image = Images.PAW_CRUSH;
         description = "50 dmg to selected target and burn effect applied";
+        energyCostImage = Images.ENERGY2;
     }
 
     @Override

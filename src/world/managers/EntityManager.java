@@ -2,6 +2,7 @@ package world.managers;
 
 import core.Main;
 import org.newdawn.slick.Graphics;
+import resources.Images;
 import world.World;
 import world.entity.enemy.EnemyUnit;
 import world.entity.Entity;
@@ -24,7 +25,7 @@ public class EntityManager {
     {
         entities = new ArrayList<>();
         animationOrder = new ArrayList<>();
-        entities.add(new PlayerUnit((int) (Main.getScreenWidth() * 0.15), (int) (Main.getScreenHeight() * 0.6)));
+        entities.add(new PlayerUnit((int) (Main.getScreenWidth() * 0.15), (int) (Main.getScreenHeight() * 0.6) - Images.BEAR_HERO.getHeight()));
         newRound();
     }
 
@@ -33,18 +34,18 @@ public class EntityManager {
     public void newRound() {
         round++;
         if(round % 10 == 0){
-            entities.add(new Godzilla((int) (Main.getScreenWidth() * 0.65), (int) (Main.getScreenHeight() * 0.6)));
+            entities.add(new Godzilla((int) (Main.getScreenWidth() * 0.65), (int) (Main.getScreenHeight() * 0.6 - Images.GODZILLA.getHeight())));
         }
         else if(round % 5 == 0){
             if(Math.random() <= .5){
-                entities.add(new Stack((int) (Main.getScreenWidth() * 0.65), (int) (Main.getScreenHeight() * 0.6)));
+                entities.add(new Stack((int) (Main.getScreenWidth() * 0.65), (int) (Main.getScreenHeight() * 0.6) - Images.STACKENEMY.getHeight()));
             }else{
-                entities.add(new Truck((int) (Main.getScreenWidth() * 0.65), (int) (Main.getScreenHeight() * 0.6)));
+                entities.add(new Truck((int) (Main.getScreenWidth() * 0.65), (int) (Main.getScreenHeight() * 0.6) - Images.TRUCKENEMY.getHeight()));
             }
 
         }else {
-            entities.add(new Soldier((int) (Main.getScreenWidth() * 0.65), (int) (Main.getScreenHeight() * 0.6)));
-            entities.add(new Horse((int) (Main.getScreenWidth()* 0.78), (int) (Main.getScreenHeight() * 0.6)));
+            entities.add(new Soldier((int) (Main.getScreenWidth() * 0.65), (int) (Main.getScreenHeight() * 0.6) - Images.ENEMY1.getHeight()));
+            entities.add(new Horse((int) (Main.getScreenWidth()* 0.78), (int) (Main.getScreenHeight() * 0.6) - Images.ENEMY2.getHeight()));
         }
     }
 

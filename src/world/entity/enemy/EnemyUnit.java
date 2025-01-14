@@ -25,7 +25,7 @@ public class EnemyUnit extends Entity {
 
         addMoves();
 
-        nextMovePanel = new NextMovePanel(x + width, y + height, 100, 200);
+        nextMovePanel = new NextMovePanel(x + width, y, 100, 150);
         nextMovePanel.updateNextMove(moveSet.getNextMove());
     }
     protected void addMoves(){

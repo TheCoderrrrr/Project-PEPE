@@ -39,6 +39,7 @@ public abstract class Card {
     protected boolean outlined;
     protected String name;
     protected String description;
+    protected Image energyCostImage;
 
     public Card() {
         centerX = x + width / 2;
@@ -65,10 +66,12 @@ public abstract class Card {
             g.drawImage(image, x, y);
             g.setColor(Color.black);
             g.drawString(getName(), (float) (x + width * 0.05), (float) (y + height * 0.02));
+            g.drawImage(energyCostImage, x + width - (float) energyCostImage.getWidth(), y + (float) energyCostImage.getHeight() / 5);
             Fonts.RETROGAMING.wrap(g, description, (float) (x + width * 0.05), (float) (y + height * 0.7), width - 10, 15);
         } else {
             g.drawImage(image, gc.getInput().getMouseX() - translationalX, gc.getInput().getMouseY() - translationalY);
             g.setColor(Color.black);
+            g.drawImage(energyCostImage, gc.getInput().getMouseX() - translationalX + width - (float) energyCostImage.getWidth(), gc.getInput().getMouseY() - translationalY + (float) energyCostImage.getHeight()/5);
             g.drawString(getName(), (float) (gc.getInput().getMouseX() - translationalX + (width * 0.05)), (float) (gc.getInput().getMouseY() - translationalY + height * 0.02));
             Fonts.RETROGAMING.wrap(g, description, gc.getInput().getMouseX() - translationalX + (float) (width * 0.05), gc.getInput().getMouseY() - translationalY + (float) (height * 0.7), width - 10, 15);
         }
@@ -179,5 +182,8 @@ public abstract class Card {
     public int getEnergyCost()
     {
         return energyCost;
+    }
+    public Image getEnergyCostImage(){
+        return energyCostImage;
     }
 }

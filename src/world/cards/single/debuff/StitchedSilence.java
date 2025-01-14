@@ -14,6 +14,7 @@ public class StitchedSilence extends TargetedCard implements StatusEffect {
         name = "Stitched Silence";
         image = Images.STITCHED_SILENCE;
         description = "Decrease enemy attack by 10%";
+        energyCostImage = Images.ENERGY1;
     }
 
     @Override

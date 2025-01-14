@@ -14,6 +14,7 @@ public class Slam extends TargetedCard implements StatusEffect {
         name = "Slam";
         image = Images.SLAM;
         description = "20 dmg to selected target and mark effect";
+        energyCostImage = Images.ENERGY1;
     }
 
     @Override

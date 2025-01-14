@@ -15,6 +15,7 @@ public class ThreadTornado extends GlobalCard {
         name = "Thread Tornado";
         description = "25 dmg to all enemies";
         image = Images.THREAD_TORNADO;
+        energyCostImage = Images.ENERGY1;
     }
 
     @Override

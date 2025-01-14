@@ -13,6 +13,7 @@ public class PrimalRage extends SelfTargeted implements StatusEffect {
         energyCost = 1;
         name = "Primal Rage";
         description = "Increase Dmg by 30% for a round";
+        energyCostImage = Images.ENERGY1;
     }
     @Override
     public void applyEffect(Entity e) {

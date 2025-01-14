@@ -14,6 +14,7 @@ public class MuffledRoar extends TargetedCard implements StatusEffect {
         name = "Muffled Roar";
         image = Images.MUFFLED_ROAR;
         description = "Applies Vulnerability";
+        energyCostImage = Images.ENERGY1;
     }
     @Override
     public void applyEffect(Entity e) {

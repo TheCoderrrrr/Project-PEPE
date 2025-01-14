@@ -14,6 +14,7 @@ public class BearHug extends TargetedCard implements StatusEffect {
         name = "Bear Hug";
         image = Images.BEAR_HUG;
         description = "20 dmg to selected target and applies vulnerable effect";
+        energyCostImage = Images.ENERGY2;
     }
 
     @Override

@@ -124,4 +124,5 @@ public abstract class Entity {
     public StatusEffectPanel getStatusEffectPanel(){
         return statusEffectPanel;
     }
+
 }

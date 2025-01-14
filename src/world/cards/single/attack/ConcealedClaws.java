@@ -10,5 +10,6 @@ public class ConcealedClaws extends TargetedCard {
         energyCost = 4;
         name = "Concealed Claws";
         image = Images.CONCEALED_CLAWS;
+        energyCostImage = Images.ENERGY4;
     }
 }

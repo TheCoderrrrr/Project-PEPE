@@ -14,6 +14,7 @@ public class ComfortCurse extends GlobalCard implements StatusEffect {
         name = "Comfort Curse";
         description = "Adds Vulnerability";
         image = Images.COMFORT_CURSE;
+        energyCostImage = Images.ENERGY2;
     }
     @Override
     public void applyEffect(Entity e) {

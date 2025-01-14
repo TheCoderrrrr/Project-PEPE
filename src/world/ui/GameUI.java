@@ -69,9 +69,9 @@ public class GameUI {
         for(Entity e : entityManager.getEntities())
         {
             g.setColor(Color.black);
-            g.fillRect((float) e.getX(), (float) (e.getY() + e.getHeight()), (float) e.getWidth(), (float) (Main.getScreenHeight() * 0.01));
+            g.fillRect((float) e.getX(), (float) (e.getY() + e.getHeight() - Main.getScreenHeight() * 0.01), (float) e.getWidth(), (float) (Main.getScreenHeight() * 0.01));
             g.setColor(Color.red);
-            g.fillRect((float) e.getX(), (float) (e.getY() + e.getHeight()), (float) e.getWidth() * e.getPercentHealthLeft(), (float) (Main.getScreenHeight() * 0.01));
+            g.fillRect((float) e.getX(), (float) (e.getY() + e.getHeight() - Main.getScreenHeight() * 0.01), (float) e.getWidth() * e.getPercentHealthLeft(), (float) (Main.getScreenHeight() * 0.01));
         }
     }
     public void renderEffects(Graphics g)

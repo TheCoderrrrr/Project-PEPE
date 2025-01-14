@@ -12,6 +12,7 @@ public class ExtraStuffing extends SelfTargeted implements StatusEffect {
         energyCost = 0;
         name = "Extra Stuffing";
         description = "Reduce incoming dmg by 25%";
+        energyCostImage = Images.ENERGY0;
     }
     @Override
     public void applyEffect(Entity e) {
