@@ -44,5 +44,8 @@ abstract public class Effect {
     public String getInfo(){
         return info;
     }
+    public void updateInfo(){
+        info = info;
+    }
 
 }

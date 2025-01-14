@@ -2,7 +2,7 @@ package world.cards.multi.attack;
 
 import resources.Images;
 import world.cards.multi.GlobalCard;
-import world.entity.EnemyUnit;
+import world.entity.enemy.EnemyUnit;
 import world.entity.Entity;
 
 import java.util.ArrayList;

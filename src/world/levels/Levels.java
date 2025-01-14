@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import core.Main;
 import world.entity.Entity;
-import world.entity.EnemyUnit;
+import world.entity.enemy.EnemyUnit;
 public class Levels {
     public static void generateLevel(int level, ArrayList<Entity> units) {
         int num = (int) (Math.random() * 4);

@@ -16,6 +16,7 @@ import world.ui.GameUI;
 
 public class Game extends BasicGameState 
 {
+	private static Image background;
 	private StateBasedGame sbg;
 	private int id;
 	private CardManager cardManager;
@@ -49,6 +50,7 @@ public class Game extends BasicGameState
 		world = new World(sbg, gc, cardManager, entityManager);
 		ui = new GameUI(cardManager, entityManager);
  		Sounds.BGMUSIC1.loop(1F, .2F);
+		 background = Images.HAPPYBACKGROUND;
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
@@ -61,7 +63,7 @@ public class Game extends BasicGameState
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException 
 	{
-		g.drawImage(Images.BACKGROUND.getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight()), 0, 0);
+		g.drawImage(background, 0, 0);
 		world.render(g);
 		ui.render(g);
 
@@ -105,5 +107,9 @@ public class Game extends BasicGameState
 	}
 	public static void lose(){
 		lose = true;
+	}
+	public static void changeBackground(Image image)
+	{
+		background = image;
 	}
 }

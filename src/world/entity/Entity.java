@@ -36,8 +36,8 @@ public abstract class Entity {
         this.y = y;
         width = 100;
         height = 200;
-        curHealth = 100;
-        maxHealth = curHealth;
+        maxHealth = 100;
+        curHealth = maxHealth;
         statusEffectPanel = new StatusEffectPanel(x, y + height, 96, 96);
     }
 

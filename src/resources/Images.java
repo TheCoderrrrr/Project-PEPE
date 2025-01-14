@@ -1,5 +1,6 @@
 package resources;
 
+import core.Main;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
@@ -8,6 +9,8 @@ public class Images {
 
     public static Image PLACEHOLDERCARD;
     public static Image BACKGROUND;
+    public static Image CREEPYBACKGROUND;
+    public static Image HAPPYBACKGROUND;
     public static Image BEAR_MOVESET;
     public static SpriteSheet BEAR_MOVES;
 
@@ -59,6 +62,8 @@ public class Images {
         {
             PLACEHOLDERCARD = new Image("res/images/cards/card_template.png");
             BACKGROUND = new Image("res/images/backgrounds/background.png");
+            HAPPYBACKGROUND = new Image("res/images/backgrounds/happyBackground.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
+            CREEPYBACKGROUND = new Image("res/images/backgrounds/creepyBackground.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
 
             loadBearImages();
 

@@ -2,11 +2,11 @@ package world.managers;
 
 import core.Main;
 import org.newdawn.slick.Graphics;
-import world.Player;
 import world.World;
-import world.entity.EnemyUnit;
+import world.entity.enemy.EnemyUnit;
 import world.entity.Entity;
 import world.entity.PlayerUnit;
+import world.entity.enemy.boss.Godzilla;
 
 import java.util.ArrayList;
 
@@ -14,6 +14,7 @@ public class EntityManager {
     private final ArrayList<EnemyUnit> animationOrder;
     private final ArrayList<Entity> entities;
     private boolean animating;
+    private static int round = 0;
 
     public EntityManager()
     {
@@ -26,8 +27,18 @@ public class EntityManager {
     public boolean isAnimating() {return animating;}
 
     public void newRound() {
-        entities.add(new EnemyUnit((int) (Main.getScreenWidth() * 0.65), (int) (Main.getScreenHeight() * 0.6)));
-        entities.add(new EnemyUnit((int) (Main.getScreenWidth()* 0.78), (int) (Main.getScreenHeight() * 0.6)));
+        round++;
+        if(round % 10 == 0){
+            entities.add(new Godzilla((int) (Main.getScreenWidth() * 0.65), (int) (Main.getScreenHeight() * 0.6)));
+        }
+        else if(round % 5 == 0){
+            entities.add(new EnemyUnit((int) (Main.getScreenWidth() * 0.65), (int) (Main.getScreenHeight() * 0.6)));
+            entities.add(new EnemyUnit((int) (Main.getScreenWidth()* 0.78), (int) (Main.getScreenHeight() * 0.6)));
+
+        }else {
+            entities.add(new EnemyUnit((int) (Main.getScreenWidth() * 0.65), (int) (Main.getScreenHeight() * 0.6)));
+            entities.add(new EnemyUnit((int) (Main.getScreenWidth()* 0.78), (int) (Main.getScreenHeight() * 0.6)));
+        }
     }
 
     public boolean enemiesKilled() {
@@ -109,5 +120,8 @@ public class EntityManager {
     public ArrayList<Entity> getEntities()
     {
         return entities;
+    }
+    public int getRound(){
+        return round;
     }
 }

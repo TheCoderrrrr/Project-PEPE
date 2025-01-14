@@ -6,6 +6,7 @@ import org.newdawn.slick.Font;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.state.StateBasedGame;
+import resources.Images;
 import world.cards.Card;
 import world.managers.CardManager;
 import world.managers.EntityManager;
@@ -21,7 +22,7 @@ public class World {
     public static EntityManager entityManager;
     private GameContainer gc;
     private StateBasedGame sbg;
-    private static int turn = 0;
+    private static int turn = 1;
     private static boolean playerTurn;
     private static String mode;
     private static ArrayList<FloatText> text;
@@ -41,6 +42,14 @@ public class World {
 
     public void render(Graphics g) {
         g.drawString(" " + turn, 100, 100);
+        if(World.entityManager.getRound() % 10 == 0)
+        {
+            Game.changeBackground(Images.CREEPYBACKGROUND);
+        }
+        else{
+            Game.changeBackground(Images.HAPPYBACKGROUND);
+
+        }
         entityManager.render(g);
         CardManager.render(g);
 

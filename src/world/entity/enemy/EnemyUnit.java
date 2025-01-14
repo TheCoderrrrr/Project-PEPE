@@ -1,4 +1,4 @@
-package world.entity;
+package world.entity.enemy;
 
 import resources.Images;
 import world.Player;
@@ -11,21 +11,24 @@ import world.enemyMoveset.RandomMoveSet;
 import world.enemyMoveset.moves.*;
 import world.enemyMoveset.MoveSet;
 import world.enemyMoveset.PlannedMoveSet;
+import world.entity.Entity;
 import world.ui.panel.NextMovePanel;
 
 import java.util.ArrayList;
 
-public class EnemyUnit extends Entity{
+public class EnemyUnit extends Entity {
     private MoveSet moveSet;
     private NextMovePanel nextMovePanel;
 
     public EnemyUnit(int x, int y) {
         super(x, y);
-        if (Math.random() < 0.5) {
-            image = Images.ENEMY1;
-        } else {
-            image = Images.ENEMY2;
-        }
+
+        addMoves();
+
+        nextMovePanel = new NextMovePanel(x + width, y + height, 100, 200);
+        nextMovePanel.updateNextMove(moveSet.getNextMove());
+    }
+    private void addMoves(){
         ArrayList<Move> moves = new ArrayList<>() {{
             add(new BasicAttack());
             add(new BABA());
@@ -34,8 +37,6 @@ public class EnemyUnit extends Entity{
         }};
         moveSet = new RandomMoveSet();
         moveSet.addMove(moves);
-        nextMovePanel = new NextMovePanel(x + width, y + height, 100, 200);
-        nextMovePanel.updateNextMove(moveSet.getNextMove());
     }
     public void action(Entity e)
     {
