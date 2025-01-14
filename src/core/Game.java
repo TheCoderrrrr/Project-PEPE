@@ -17,6 +17,7 @@ import world.ui.GameUI;
 public class Game extends BasicGameState 
 {
 	private static Image background;
+	private static Music soundtrack;
 	private StateBasedGame sbg;
 	private int id;
 	private CardManager cardManager;
@@ -90,9 +91,9 @@ public class Game extends BasicGameState
 				World.endPlayerTurn();
 			}
 		}
-//		if(key == Input.KEY_Q) {
-//			World.entityManager.getEntities().removeIf(entity -> !(entity instanceof PlayerUnit));
-//		}
+		if(key == Input.KEY_Q) {
+			World.entityManager.getEntities().removeIf(entity -> !(entity instanceof PlayerUnit));
+		}
 	}
 	
 	public void mousePressed(int button, int x, int y)
@@ -112,4 +113,5 @@ public class Game extends BasicGameState
 	{
 		background = image;
 	}
+
 }

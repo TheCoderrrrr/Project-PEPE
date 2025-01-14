@@ -63,7 +63,7 @@ public class GameUI {
     }
     public void renderEnergy(Graphics g)
     {
-        g.setColor(Color.black);
+        g.setColor(Color.white);
         Fonts.RETROGAMING.drawString(g, "current energy / maximum energy : " + cardManager.getCurEnergy() + " / " + cardManager.getMaximumEnergy(), (float) (Main.getScreenWidth() * 0.05), (float) (Main.getScreenHeight() * 0.4), 17);
     }
     public void renderHealthBars(Graphics g){

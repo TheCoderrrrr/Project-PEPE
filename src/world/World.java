@@ -5,8 +5,10 @@ import core.Main;
 import org.newdawn.slick.Font;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.state.StateBasedGame;
 import resources.Images;
+import resources.Sounds;
 import world.cards.Card;
 import world.managers.CardManager;
 import world.managers.EntityManager;
@@ -45,10 +47,25 @@ public class World {
         if(World.entityManager.getRound() % 10 == 0)
         {
             Game.changeBackground(Images.CREEPYBACKGROUND);
+            if(Sounds.BGMUSIC1.playing())
+            {
+                Sounds.BGMUSIC1.stop();
+            }else if(Sounds.BGMUSIC2.playing()){
+                Sounds.BGMUSIC2.stop();
+            }
+            Sounds.BOSSMUSIC.loop(1, 0.2f);
         }
         else{
             Game.changeBackground(Images.HAPPYBACKGROUND);
-
+            if(Sounds.BOSSMUSIC.playing())
+            {
+                Sounds.BOSSMUSIC.stop();
+                if(Math.random() < 0.5){
+                    Sounds.BGMUSIC2.play(1, 0.2f);
+                }else{
+                    Sounds.BGMUSIC1.play(1, 0.2f);
+                }
+            }
         }
         entityManager.render(g);
         CardManager.render(g);

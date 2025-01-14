@@ -6,6 +6,8 @@ import org.newdawn.slick.Sound;
 
 public class Sounds {
     public static Music BGMUSIC1;
+    public static Music BGMUSIC2;
+    public static Music BOSSMUSIC;
     public static Sound REEEEEEEEE;
     public static Sound GOOFY;
     public static Sound MUSICATTACK;
@@ -27,6 +29,8 @@ public class Sounds {
     {
         try{
             BGMUSIC1 = new Music("res/music/bgmusic1.ogg");
+            BGMUSIC2 = new Music("res/music/funMusic.ogg");
+            BOSSMUSIC = new Music("res/music/bossMusic.ogg");
         }
         catch (SlickException e)
         {
