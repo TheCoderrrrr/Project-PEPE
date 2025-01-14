@@ -20,7 +20,14 @@ public class NextMovePanel extends Panel{
         g.setColor(Color.white);
         if(nextMove != null){
             Fonts.COFFEEHEALINGITALIC.drawString(g, nextMove.getClass().getSimpleName(),x , y, 30);
-            Fonts.COFFEEHEALINGITALIC.wrap(g, nextMove.getInfo(), x, y + Fonts.COFFEEHEALINGITALIC.getHeight(g,nextMove.getClass().getSimpleName(), 1000, 30), width, 20);
+            if(nextMove.getInfo() != null)
+            {
+                Fonts.COFFEEHEALINGITALIC.wrap(g, nextMove.getInfo(), x, y + Fonts.COFFEEHEALINGITALIC.getHeight(g,nextMove.getClass().getSimpleName(), 1000, 30), width, 20);
+            }
         }
+    }
+    public void updatePos(int x, int y){
+        this.x = x;
+        this.y = y;
     }
 }

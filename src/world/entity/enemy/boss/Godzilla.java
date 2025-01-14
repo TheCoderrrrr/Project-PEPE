@@ -13,7 +13,7 @@ public class Godzilla extends EnemyUnit {
         super(x, y);
         image = Images.GODZILLA;
         width = image.getWidth();
-        height = image.getHeight();
+        nextMovePanel.updatePos(x + width, height);
         maxHealth *= 4;
         curHealth = maxHealth;
     }

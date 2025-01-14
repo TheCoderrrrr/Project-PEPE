@@ -119,6 +119,9 @@ public abstract class Entity {
     {
         return height;
     }
+    public int getImageHeight(){
+        return image.getHeight();
+    }
     public StatusEffectPanel getStatusEffectPanel(){
         return statusEffectPanel;
     }

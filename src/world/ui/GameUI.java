@@ -63,18 +63,18 @@ public class GameUI {
     }
     public void renderEnergy(Graphics g)
     {
-        g.setColor(Color.blue);
-        g.drawString("current energy / maximum energy : " + cardManager.getCurEnergy() + " / " + cardManager.getMaximumEnergy(), (float) (Main.getScreenWidth() * 0.05), (float) (Main.getScreenHeight() * 0.9));
+        g.setColor(Color.black);
+        Fonts.RETROGAMING.drawString(g, "current energy / maximum energy : " + cardManager.getCurEnergy() + " / " + cardManager.getMaximumEnergy(), (float) (Main.getScreenWidth() * 0.05), (float) (Main.getScreenHeight() * 0.4), 17);
     }
     public void renderHealthBars(Graphics g){
         for(Entity e : entityManager.getEntities())
         {
             g.setColor(Color.black);
-            g.fillRect((float) e.getX(), (float) (e.getY() + e.getHeight() - Main.getScreenHeight() * 0.01), (float) e.getWidth(), (float) (Main.getScreenHeight() * 0.01));
+            g.fillRect((float) e.getX(), (float) (e.getY() + e.getImageHeight() - Main.getScreenHeight() * 0.01), (float) e.getWidth(), (float) (Main.getScreenHeight() * 0.01));
             g.setColor(Color.red);
-            g.fillRect((float) e.getX(), (float) (e.getY() + e.getHeight() - Main.getScreenHeight() * 0.01), (float) e.getWidth() * e.getPercentHealthLeft(), (float) (Main.getScreenHeight() * 0.01));
+            g.fillRect((float) e.getX(), (float) (e.getY() + e.getImageHeight() - Main.getScreenHeight() * 0.01), (float) e.getWidth() * e.getPercentHealthLeft(), (float) (Main.getScreenHeight() * 0.01));
             g.setColor(Color.white);
-            Fonts.SAZIGONE.drawString(g, e.getCurHealth() + " / " + e.getMaxHealth(), (float) e.getX(), (float) (e.getY() + e.getHeight() - Main.getScreenHeight() * 0.01), 20);
+            Fonts.SAZIGONE.drawString(g, e.getCurHealth() + " / " + e.getMaxHealth(), (float) e.getX(), (float) (e.getY() + e.getImageHeight() - Main.getScreenHeight() * 0.015), 20);
         }
     }
     public void renderEffects(Graphics g)
