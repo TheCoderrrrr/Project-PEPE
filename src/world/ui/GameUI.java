@@ -3,6 +3,7 @@ package world.ui;
 import core.Main;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
+import resources.Fonts;
 import world.cards.Card;
 import world.entity.enemy.EnemyUnit;
 import world.entity.Entity;
@@ -72,6 +73,8 @@ public class GameUI {
             g.fillRect((float) e.getX(), (float) (e.getY() + e.getHeight() - Main.getScreenHeight() * 0.01), (float) e.getWidth(), (float) (Main.getScreenHeight() * 0.01));
             g.setColor(Color.red);
             g.fillRect((float) e.getX(), (float) (e.getY() + e.getHeight() - Main.getScreenHeight() * 0.01), (float) e.getWidth() * e.getPercentHealthLeft(), (float) (Main.getScreenHeight() * 0.01));
+            g.setColor(Color.white);
+            Fonts.SAZIGONE.drawString(g, e.getCurHealth() + " / " + e.getMaxHealth(), (float) e.getX(), (float) (e.getY() + e.getHeight() - Main.getScreenHeight() * 0.01), 20);
         }
     }
     public void renderEffects(Graphics g)

@@ -4,6 +4,7 @@ import world.entity.Entity;
 
 public abstract class Move {
     private int damage;
+    protected String info;
 
     public Move() {
 
@@ -13,5 +14,8 @@ public abstract class Move {
 
     public int getDamage() {
         return damage;
+    }
+    public String getInfo(){
+        return info;
     }
 }

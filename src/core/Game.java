@@ -90,9 +90,9 @@ public class Game extends BasicGameState
 				World.endPlayerTurn();
 			}
 		}
-		if(key == Input.KEY_Q) {
-			World.entityManager.getEntities().removeIf(entity -> !(entity instanceof PlayerUnit));
-		}
+//		if(key == Input.KEY_Q) {
+//			World.entityManager.getEntities().removeIf(entity -> !(entity instanceof PlayerUnit));
+//		}
 	}
 	
 	public void mousePressed(int button, int x, int y)

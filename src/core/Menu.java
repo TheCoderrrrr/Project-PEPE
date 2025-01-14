@@ -9,6 +9,7 @@ public class Menu extends BasicGameState {
     StateBasedGame sbg;
     private int id;
     private int trans;
+    private Image background;
 
     public Menu(int id) {
         this.id = id;
@@ -23,6 +24,7 @@ public class Menu extends BasicGameState {
         this.sbg = sbg;
         gc.setShowFPS(true);
         trans = 255;
+        background = new Image("res/images/backgrounds/TitleScreen.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
@@ -30,16 +32,7 @@ public class Menu extends BasicGameState {
     }
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-//        g.setColor(new Color(255, 255, 255, trans));
-//        Fonts.MATCHA.drawStringCentered(g,"MENU\nSPACE TO ENTER GAME", (float) Main.getScreenWidth()/2, (float) Main.getScreenHeight()/2);
-        g.setColor(Color.blue);
-        g.fillRect((float) (Main.getScreenWidth() * .25), (float) (Main.getScreenHeight() * .75), 50, Fonts.COFFEEHEALINGITALIC.getHeight(g, "WITH GREAT POWER COMES NO RESPONSIBILITY", 50, 20));
-        g.setColor(Color.white);
-        Fonts.COFFEEHEALINGITALIC.wrap(g, "WITH GREAT POWER COMES NO RESPONSIBILITY", (float) (Main.getScreenWidth() * .25), (float) (Main.getScreenHeight() * .75), 50, 20);
-        Fonts.MATCHA.wrap(g, "WITH GREAT POWER COMES NO RESPONSIBILITY", (float) (Main.getScreenWidth() * .35), (float) (Main.getScreenHeight() * .55), 200, 20);
-        Fonts.SAZIGONE.wrap(g, "WITH GREAT POWER COMES NO RESPONSIBILITY", (float) (Main.getScreenWidth() * .45), (float) (Main.getScreenHeight() * .35), 200, 20);
-        Fonts.WHETHERS.wrap(g, "WITH GREAT POWER COMES NO RESPONSIBILITY", (float) (Main.getScreenWidth() * .55), (float) (Main.getScreenHeight() * .15), 200, 20);
-
+        g.drawImage(background,0, 0);
     }
 
     public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException {

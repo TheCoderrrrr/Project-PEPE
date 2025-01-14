@@ -6,6 +6,11 @@ import world.enemyMoveset.moves.AttackMove;
 import world.entity.Entity;
 
 public class TowerBlock extends AttackMove implements StatusEffect {
+
+    public TowerBlock()
+    {
+        info = "Does 10 damage and 'Shield' effect is applied";
+    }
     @Override
     public void action(Entity entity) {
         entity.takeDamage(10);

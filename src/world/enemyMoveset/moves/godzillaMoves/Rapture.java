@@ -6,6 +6,11 @@ import world.enemyMoveset.moves.AttackMove;
 import world.entity.Entity;
 
 public class Rapture extends AttackMove implements StatusEffect {
+
+    public Rapture()
+    {
+        info = "Does 20 damage and 'Vulnerable' effect is applied";
+    }
     @Override
     public void action(Entity entity) {
         entity.takeDamage(20);

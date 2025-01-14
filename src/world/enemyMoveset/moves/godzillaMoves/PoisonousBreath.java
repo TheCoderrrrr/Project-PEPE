@@ -7,6 +7,11 @@ import world.entity.Entity;
 
 public class PoisonousBreath extends AttackMove implements StatusEffect {
 
+    public PoisonousBreath()
+    {
+        info = "Does 15 damage and 'Poison' effect is applied";
+    }
+
     @Override
     public void action(Entity entity) {
         entity.takeDamage(15);

@@ -7,6 +7,11 @@ import world.enemyMoveset.moves.AttackMove;
 import world.entity.Entity;
 
 public class BombSurprise extends AttackMove implements StatusEffect {
+
+    public BombSurprise()
+    {
+        info = "Does 15 damage and 'Vulnerable' effect is applied";
+    }
     @Override
     public void action(Entity entity) {
         entity.takeDamage(15);

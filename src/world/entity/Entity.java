@@ -110,8 +110,6 @@ public abstract class Entity {
     public void render(Graphics g) {
         g.setColor(Color.white);
         g.drawImage(image,x - animationFrame , y);
-        g.setColor(Color.blue);
-        g.drawString(""+ curHealth, x - animationFrame, y);
     }
     public int getWidth()
     {

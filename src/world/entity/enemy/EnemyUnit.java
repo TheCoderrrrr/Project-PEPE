@@ -25,19 +25,10 @@ public class EnemyUnit extends Entity {
 
         addMoves();
 
-        nextMovePanel = new NextMovePanel(x + width, y, 100, 150);
+        nextMovePanel = new NextMovePanel(x + width, y, 120, 200);
         nextMovePanel.updateNextMove(moveSet.getNextMove());
     }
-    protected void addMoves(){
-        ArrayList<Move> moves = new ArrayList<>() {{
-            add(new BasicAttack());
-            add(new BABA());
-            add(new RAA());
-            add(new IDEK());
-        }};
-        moveSet = new RandomMoveSet();
-        moveSet.addMove(moves);
-    }
+    protected void addMoves(){}
     public void action(Entity e)
     {
         if(moveSet.getCurMove() instanceof BuffMove){

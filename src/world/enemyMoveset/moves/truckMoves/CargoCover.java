@@ -8,6 +8,11 @@ import world.entity.Entity;
 
 public class CargoCover extends AttackMove implements StatusEffect {
 
+    public CargoCover()
+    {
+        info = "Does 15 damage and 'Shield' effect is applied";
+    }
+
     @Override
     public void action(Entity entity) {
         entity.takeDamage(15);
