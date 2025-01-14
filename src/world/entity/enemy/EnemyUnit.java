@@ -17,8 +17,8 @@ import world.ui.panel.NextMovePanel;
 import java.util.ArrayList;
 
 public class EnemyUnit extends Entity {
-    private MoveSet moveSet;
-    private NextMovePanel nextMovePanel;
+    protected MoveSet moveSet;
+    protected NextMovePanel nextMovePanel;
 
     public EnemyUnit(int x, int y) {
         super(x, y);
@@ -28,7 +28,7 @@ public class EnemyUnit extends Entity {
         nextMovePanel = new NextMovePanel(x + width, y + height, 100, 200);
         nextMovePanel.updateNextMove(moveSet.getNextMove());
     }
-    private void addMoves(){
+    protected void addMoves(){
         ArrayList<Move> moves = new ArrayList<>() {{
             add(new BasicAttack());
             add(new BABA());

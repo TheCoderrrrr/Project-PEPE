@@ -45,6 +45,9 @@ public class Images {
     //Enemy Images
     public static Image ENEMY1;
     public static Image ENEMY2;
+    public static Image STACKENEMY;
+    public static Image TRUCKENEMY;
+    public static Image GODZILLA;
 
     //Effect Symbols
     public static Image BURNING;
@@ -71,6 +74,10 @@ public class Images {
 
             ENEMY1 = new Image("res/images/entity/enemy/Green_Army_Soldier.png");
             ENEMY2 = new Image("res/images/entity/enemy/Rolling_Horse.png");
+            STACKENEMY = new Image("res/images/entity/enemy/miniboss/stack.png");
+            TRUCKENEMY = new Image("res/images/entity/enemy/miniboss/truck.png");
+            GODZILLA = new Image("res/images/entity/enemy/boss/godzilla.png").getScaledCopy(3);
+
 
         }
         catch (SlickException e)

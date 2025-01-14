@@ -6,7 +6,11 @@ import world.World;
 import world.entity.enemy.EnemyUnit;
 import world.entity.Entity;
 import world.entity.PlayerUnit;
+import world.entity.enemy.Horse;
+import world.entity.enemy.Soldier;
 import world.entity.enemy.boss.Godzilla;
+import world.entity.enemy.miniboss.Stack;
+import world.entity.enemy.miniboss.Truck;
 
 import java.util.ArrayList;
 
@@ -32,12 +36,15 @@ public class EntityManager {
             entities.add(new Godzilla((int) (Main.getScreenWidth() * 0.65), (int) (Main.getScreenHeight() * 0.6)));
         }
         else if(round % 5 == 0){
-            entities.add(new EnemyUnit((int) (Main.getScreenWidth() * 0.65), (int) (Main.getScreenHeight() * 0.6)));
-            entities.add(new EnemyUnit((int) (Main.getScreenWidth()* 0.78), (int) (Main.getScreenHeight() * 0.6)));
+            if(Math.random() <= .5){
+                entities.add(new Stack((int) (Main.getScreenWidth() * 0.65), (int) (Main.getScreenHeight() * 0.6)));
+            }else{
+                entities.add(new Truck((int) (Main.getScreenWidth() * 0.65), (int) (Main.getScreenHeight() * 0.6)));
+            }
 
         }else {
-            entities.add(new EnemyUnit((int) (Main.getScreenWidth() * 0.65), (int) (Main.getScreenHeight() * 0.6)));
-            entities.add(new EnemyUnit((int) (Main.getScreenWidth()* 0.78), (int) (Main.getScreenHeight() * 0.6)));
+            entities.add(new Soldier((int) (Main.getScreenWidth() * 0.65), (int) (Main.getScreenHeight() * 0.6)));
+            entities.add(new Horse((int) (Main.getScreenWidth()* 0.78), (int) (Main.getScreenHeight() * 0.6)));
         }
     }
 
